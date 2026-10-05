@@ -1,0 +1,29 @@
+{
+  "check_id": "C7",
+  "status": "pass",
+  "owner": "sharva",
+  "timestamp": "2026-10-05T06:03:47.447341+00:00",
+  "code_commit": "0be5a98",
+  "details": {
+    "tests": [
+      "tests/server/test_smoke.py"
+    ],
+    "pytest_summary": "4 passed, 1 warning in 3.67s",
+    "docker_build_in_ci": "pass (job docker, run https://github.com/Celaidon/Nap-in-a-boat/actions/runs/37270301720)",
+    "container_smoke_in_ci": "pass: image run with mock registry/metrics + FAKE_GENERATOR, scripts/smoke_test.py passed against it",
+    "local_docker_run": "NOT RUN: Docker is not installed on the dev machine; CI job covers build and run",
+    "local_real_model_smoke": {
+      "server": "uvicorn with DEV_MODEL_OVERRIDE=qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "blends": [
+        "sweep_000",
+        "sweep_050",
+        "sweep_100"
+      ],
+      "tokens_per_sec": [
+        44.79,
+        45.45,
+        44.14
+      ]
+    }
+  }
+}

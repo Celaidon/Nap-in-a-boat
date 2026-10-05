@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Smoke test for a running BlendLab server.
 
     python scripts/smoke_test.py http://localhost:8000
