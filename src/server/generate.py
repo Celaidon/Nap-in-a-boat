@@ -4,6 +4,7 @@ import asyncio
 import os
 import threading
 from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 FAKE_SENTENCE = "Soft rain falls on quiet rooftops while the whole city sleeps and dreams of morning light"
 FAKE_DELAY_S = 0.02
@@ -92,3 +93,61 @@ def load_llama(model_path: str):
     from llama_cpp import Llama
 
     return Llama(model_path=model_path, n_ctx=N_CTX, n_threads=os.cpu_count(), verbose=False)
+
+
+# ---- Best Blend Finder helpers ----------------------------------------------
+
+FINDER_MAX_TOKENS = 512
+
+
+class Cancelled(Exception):
+    """Raised inside a worker thread when its request was cancelled."""
+
+
+def make_generate(llm, stop_event: threading.Event, max_tokens: int = FINDER_MAX_TOKENS):
+    """Build the `generate(prompt) -> str` function that score_tasks receives.
+
+    Greedy (temperature 0) and returns the full answer at once. Internally it reads the
+    stream so a cancel stops it within one token. Blocking: call it from a worker thread.
+    """
+
+    def generate(prompt: str) -> str:
+        chunks = llm.create_chat_completion(
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=max_tokens,
+            temperature=0.0,
+            stream=True,
+        )
+        pieces = []
+        try:
+            for chunk in chunks:
+                if stop_event.is_set():
+                    raise Cancelled
+                text = chunk["choices"][0]["delta"].get("content")
+                if text:
+                    pieces.append(text)
+        finally:
+            chunks.close()
+        return "".join(pieces)
+
+    return generate
+
+
+@asynccontextmanager
+async def fake_session(blend_id: str, stop_event: threading.Event):
+    """Stand-in for ModelManager.session when FAKE_GENERATOR is on: answers are instant."""
+    yield lambda prompt: f"{blend_id}: {FAKE_SENTENCE}"
+
+
+async def run_blocking(fn, *args):
+    """Run fn(*args) in a thread. If we are cancelled, still wait for the thread to end.
+
+    The caller's stop_event makes the thread quit quickly. Waiting matters because the
+    model lock is released right after, and a Llama must never be used by two threads.
+    """
+    future = asyncio.ensure_future(asyncio.to_thread(fn, *args))
+    try:
+        return await asyncio.shield(future)
+    except asyncio.CancelledError:
+        await asyncio.gather(future, return_exceptions=True)
+        raise

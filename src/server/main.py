@@ -1,4 +1,5 @@
 # FastAPI app: REST endpoints (contract 4.3), startup validation, static frontend.
+import importlib
 import json
 import logging
 from contextlib import asynccontextmanager
@@ -7,7 +8,7 @@ import jsonschema
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from src.server.generate import fake_stream
+from src.server.generate import fake_session, fake_stream
 from src.server.models import ModelManager
 from src.server.settings import ROOT, Settings
 from src.server.ws import router as ws_router
@@ -41,6 +42,18 @@ def load_checked(path, schema_name: str, label: str) -> dict:
     return data
 
 
+def load_scoring(module_name: str):
+    """Import SCORING_MODULE and return its score_tasks, or fail loudly at startup."""
+    try:
+        module = importlib.import_module(module_name)
+    except ImportError as exc:
+        raise ConfigError(f"SCORING_MODULE '{module_name}' cannot be imported: {exc}") from None
+    score_tasks = getattr(module, "score_tasks", None)
+    if not callable(score_tasks):
+        raise ConfigError(f"SCORING_MODULE '{module_name}' has no score_tasks function")
+    return score_tasks
+
+
 def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
     """`stream` replaces the token source (tests inject one); otherwise it follows the settings."""
     settings = settings or Settings()
@@ -57,10 +70,13 @@ def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
         # Real tokens come from the ModelManager unless FAKE_GENERATOR is on (frontend/dev work).
         app.state.manager = ModelManager(app.state.registry, settings)
         app.state.stream = stream or (fake_stream if settings.fake_generator else app.state.manager.stream)
+        app.state.session = fake_session if settings.fake_generator else app.state.manager.session
+        app.state.score_tasks = load_scoring(settings.scoring_module)  # used by the Best Blend Finder
         yield
 
     app = FastAPI(title="BlendLab", lifespan=lifespan)
     app.state.settings = settings
+    app.state.finder_running = False  # only one Best Blend Finder run at a time
     app.include_router(ws_router)
 
     @app.get("/health")

@@ -11,7 +11,12 @@ from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 
-from src.server.generate import GenerationError, load_llama, stream_tokens
+from src.server.generate import (
+    GenerationError,
+    load_llama,
+    make_generate,
+    stream_tokens,
+)
 from src.server.settings import Settings
 
 log = logging.getLogger("blendlab.models")
@@ -91,6 +96,12 @@ class ModelManager:
         async with self.use(blend_id) as llm:
             async for text in stream_tokens(llm, messages, max_tokens, temperature, stop_event):
                 yield text
+
+    @asynccontextmanager
+    async def session(self, blend_id: str, stop_event: threading.Event):
+        """Hold a blend's model for a whole scoring run; yields a blocking generate(prompt) -> str."""
+        async with self.use(blend_id) as llm:
+            yield make_generate(llm, stop_event)
 
     @asynccontextmanager
     async def use(self, blend_id: str):
