@@ -2,7 +2,9 @@
 import { createApi } from './api.js'
 import { createMock } from './mock.js'
 
-export const useMock = new URLSearchParams(globalThis.location?.search ?? '').get('mock') === '1'
+const searchMock = new URLSearchParams(globalThis.location?.search ?? '').get('mock')
+const isVercel = globalThis.location?.hostname?.includes('vercel.app')
+export const useMock = searchMock === '1' || (isVercel && searchMock !== '0')
 
 export const api = useMock ? createMock() : createApi()
 
