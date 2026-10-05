@@ -1,0 +1,29 @@
+/* Design tokens, taken from the Nap in a Boat deck: deep maroon, blush pink, one gold accent. */
+:root {
+  --maroon: #6b0011;
+  --maroon-900: #3f0009;
+  --maroon-700: #8a0a1d;
+  --blush: #ffdfe3;
+  --blush-200: #ffeceb;
+  --paper: #fff8f5;
+  --ink: #2b0409;
+  --ink-soft: #7a5258;
+  --line: #ebc3c8;
+  --line-strong: #d49ba2;
+  --gold: #e49b2b;
+  --gold-deep: #a9680f;
+  --ok: #2c7a4b;
+  --err: #b3261e;
+
+  --font-display: 'Anton', 'Arial Narrow', Impact, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-hard: 0 3px 0 var(--maroon); /* flat, like a printed card, not a soft glow */
+  --ease: cubic-bezier(0.22, 0.8, 0.28, 1);
+
+  --column: 760px;
+  --aside: 460px;
+}

@@ -1,0 +1,13 @@
+{
+  "check_id": "I5",
+  "status": "pass",
+  "owner": "sharva",
+  "timestamp": "2026-10-05T09:25:35.369708+00:00",
+  "code_commit": "8c2d7df",
+  "details": {
+    "what": "Stopping the server mid-stream shows a clear error and the page reconnects when the server returns; no frozen page",
+    "real_server_run": "uvicorn + built UI + real Qwen 0.5B GGUF: server killed mid-stream -> gold 'Connection lost' banner, 'Reconnecting' pill, partial text kept, 'Try again' button, composer blocked; server restarted -> pill 'Online' automatically, retry completed (12 tokens, 30.6 tok/s)",
+    "automated": "web/src/api/api.test.js (reconnect, connection_lost, offline, silent-link watchdog) and web/src/App.test.jsx (drop, error, blocked send, restore, retry)",
+    "js_tests": 30
+  }
+}

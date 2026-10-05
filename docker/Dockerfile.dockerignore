@@ -21,3 +21,5 @@ hf_cache
 merged
 gguf
 llama.cpp
+web/node_modules
+web/dist

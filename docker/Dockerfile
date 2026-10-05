@@ -1,6 +1,16 @@
 # BlendLab server image. Models are NOT baked in: they download into the mounted
 # volume (/app/local_models) and are checksum-verified by the ModelManager.
 # Build from the repo root:  docker build -f docker/Dockerfile -t blendlab:latest .
+# Stage 1: build the React frontend. Nothing from this stage ships except web/dist.
+FROM node:22-slim AS web
+WORKDIR /build/web
+COPY web/package.json web/package-lock.json ./
+RUN npm ci
+COPY web/ ./
+COPY contracts/ /build/contracts/
+RUN npm run build
+
+# Stage 2: the server.
 FROM python:3.11-slim
 
 # libgomp1: the prebuilt llama-cpp-python wheel needs the OpenMP runtime.
@@ -17,7 +27,7 @@ RUN pip install --no-cache-dir --only-binary=llama-cpp-python -r requirements/se
 
 COPY contracts/ contracts/
 COPY src/ src/
-COPY web/ web/
+COPY --from=web /build/web/dist web/dist
 COPY models/ models/
 COPY results/ results/
 COPY docker/entrypoint.sh /entrypoint.sh
