@@ -76,15 +76,19 @@ class Connection:
 
     async def run_generate(self, request_id, blend_id, prompt, max_tokens, temperature, stop) -> None:
         count = 0
-        started = time.monotonic()
+        first_token_at = 0.0
         try:
             async for text in self.app.state.stream(blend_id, prompt, max_tokens, temperature, stop):
                 count += 1
+                if count == 1:
+                    first_token_at = time.monotonic()  # speed excludes model load and prompt processing
                 await self.send({"type": "token", "request_id": request_id, "text": text})
-            elapsed = max(time.monotonic() - started, 1e-6)
+            # Speed = tokens after the first / time since the first (0 if too few tokens to tell).
+            elapsed = time.monotonic() - first_token_at
+            speed = (count - 1) / elapsed if count > 1 and elapsed > 0 else 0.0
             await self.send({
                 "type": "done", "request_id": request_id, "blend_id": blend_id,
-                "tokens": count, "tokens_per_sec": round(count / elapsed, 2),
+                "tokens": count, "tokens_per_sec": round(speed, 2),
             })
         except GenerationError as exc:
             await self.error(request_id, exc.code, exc.message)

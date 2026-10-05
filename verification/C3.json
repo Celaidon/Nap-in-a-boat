@@ -1,0 +1,18 @@
+{
+  "check_id": "C3",
+  "status": "pass",
+  "owner": "sharva",
+  "timestamp": "2026-10-05T05:43:41.870733+00:00",
+  "code_commit": "ddd23f1",
+  "details": {
+    "tests": [
+      "tests/server/test_streaming.py"
+    ],
+    "pytest_summary": "9 passed, 1 warning in 9.48s",
+    "model": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+    "tokens_per_sec": 37.89,
+    "tokens": 120,
+    "health_max_ms_during_generation": 4.8,
+    "health_limit_ms": 200
+  }
+}
