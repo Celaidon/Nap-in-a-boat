@@ -9,7 +9,16 @@ jobs:
         with: { python-version: "3.11" }
       - run: pip install -r requirements/server.txt
       - run: ruff check .
-      - run: pytest -q -m "not models"
+      - name: Tests
+        shell: bash
+        run: pytest -q -m "not models" -ra --tb=short 2>&1 | tee pytest.log
+      - name: Show test failures in the job summary
+        if: failure()
+        run: |
+          echo '### pytest output (tail)' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          tail -n 80 pytest.log >> "$GITHUB_STEP_SUMMARY" || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
   docker:
     runs-on: ubuntu-latest
     steps:
