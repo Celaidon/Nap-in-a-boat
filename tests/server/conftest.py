@@ -24,6 +24,7 @@ def make_client():
 
     def build(**overrides) -> TestClient:
         overrides.setdefault("dev_model_override", "")
+        overrides.setdefault("fake_generator", True)  # tests opt in to real model code explicitly
         client = TestClient(create_app(Settings(_env_file=None, **overrides)))
         client.__enter__()
         clients.append(client)
