@@ -40,9 +40,6 @@
 .banner-ok .pulse-dot { animation: none; }
 @keyframes pulse { 50% { opacity: 0.25; transform: scale(0.75); } }
 
-.sim-banner { padding: 7px 22px; background: var(--ink); color: var(--blush); font-size: 13px; text-align: center; }
-.sim-banner b { color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; margin-right: 4px; }
-
 /* ---------- Conversation ---------- */
 .chat-wrap { flex: 1; min-height: 0; position: relative; }
 .chat { height: 100%; overflow-y: auto; padding: 26px 22px 12px; }

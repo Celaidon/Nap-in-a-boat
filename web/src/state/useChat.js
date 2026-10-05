@@ -18,8 +18,8 @@ export function useChat(api) {
   useEffect(() => {
     let alive = true
     api.connect()
-    Promise.all([api.getRegistry(), api.getMetrics(), api.getHealth().catch(() => null)])
-      .then(([registry, metrics, health]) => alive && dispatch({ type: 'loaded', registry, metrics, simulated: health?.simulated }))
+    Promise.all([api.getRegistry(), api.getMetrics()])
+      .then(([registry, metrics]) => alive && dispatch({ type: 'loaded', registry, metrics }))
       .catch((err) => alive && dispatch({ type: 'load_failed', message: err.message }))
     return () => {
       alive = false

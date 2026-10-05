@@ -156,7 +156,6 @@ export function createApi({
     connect,
     getRegistry: () => getJson('/api/registry'),
     getMetrics: () => getJson('/api/metrics'),
-    getHealth: () => getJson('/health'),
 
     generate(blendId, prompt, onToken, onDone, onError, opts = {}) {
       const message = { type: 'generate', blend_id: blendId, prompt }
