@@ -1,0 +1,14 @@
+# configs/merges/check_t1.yaml
+# A3: Parity check (t = 1.0 should perfectly match Model B)
+
+slices:
+  - sources:
+      - model: google/gemma-1.1-7b-it
+        layer_range: [0, 28]
+      - model: google/codegemma-1.1-7b-it
+        layer_range: [0, 28]
+merge_method: slerp
+base_model: google/gemma-1.1-7b-it
+parameters:
+  t: 1.0
+dtype: bfloat16
