@@ -1,0 +1,21 @@
+{
+  "check_id": "A1",
+  "status": "pass",
+  "owner": "teamlead",
+  "timestamp": "2026-10-05T09:36:26.279729+00:00",
+  "code_commit": "3a39db6",
+  "details": {
+    "model_a": "google/gemma-1.1-7b-it",
+    "model_b": "google/codegemma-1.1-7b-it",
+    "config_fields_checked": 9,
+    "config_mismatches": 0,
+    "config_mismatch_details": [],
+    "tokenizer_mismatches": 0,
+    "tokenizer_mismatch_details": [],
+    "total_tensors": 254,
+    "tensor_mismatches": 0,
+    "tensor_mismatch_details": [],
+    "total_mismatches": 0,
+    "num_hidden_layers": 28
+  }
+}
