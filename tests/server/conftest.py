@@ -1,8 +1,12 @@
 # Shared helpers for the server tests.
 import json
+import socket
+import threading
+import time
 
 import jsonschema
 import pytest
+import uvicorn
 from fastapi.testclient import TestClient
 
 from src.server.main import create_app
@@ -50,3 +54,22 @@ def collect(ws, request_id: str, stop_types=("done", "error")) -> list[dict]:
         messages.append(msg)
         if msg["type"] in stop_types:
             return messages
+
+
+@pytest.fixture
+def live_server():
+    """Run the real app on a free local port, the way uvicorn runs it in the container."""
+    with socket.socket() as probe:
+        probe.bind(("127.0.0.1", 0))
+        port = probe.getsockname()[1]
+    app = create_app(Settings(_env_file=None, fake_generator=True))
+    server = uvicorn.Server(uvicorn.Config(app, host="127.0.0.1", port=port, log_level="warning"))
+    thread = threading.Thread(target=server.run, daemon=True)
+    thread.start()
+    deadline = time.monotonic() + 10
+    while not server.started and time.monotonic() < deadline:
+        time.sleep(0.02)
+    assert server.started, "test server did not start"
+    yield f"http://127.0.0.1:{port}"
+    server.should_exit = True
+    thread.join(timeout=5)

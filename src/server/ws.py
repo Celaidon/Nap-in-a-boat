@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from fastapi import APIRouter, WebSocket
 from starlette.websockets import WebSocketDisconnect
 
+from src.server import finder
 from src.server.generate import GenerationError
 
 router = APIRouter()
@@ -66,13 +67,17 @@ class Connection:
         if isinstance(temperature, bool) or not isinstance(temperature, int | float) or temperature < 0:
             raise BadRequest("temperature must be a number of at least 0")
 
-        stop = threading.Event()
-        task = asyncio.create_task(
-            self.run_generate(
+        self.start(
+            request_id,
+            lambda stop: self.run_generate(
                 request_id, msg["blend_id"], msg["prompt"], min(max_tokens, MAX_TOKENS_CAP), temperature, stop
-            )
+            ),
         )
-        self.active[request_id] = ActiveRequest(task, stop)
+
+    def start(self, request_id: str, make_coroutine) -> None:
+        """Run a request as its own task so the receive loop stays free for cancel and pong."""
+        stop = threading.Event()
+        self.active[request_id] = ActiveRequest(asyncio.create_task(make_coroutine(stop)), stop)
 
     async def run_generate(self, request_id, blend_id, prompt, max_tokens, temperature, stop) -> None:
         count = 0
@@ -158,8 +163,33 @@ class Connection:
             await self.error(request_id, "bad_request", str(exc))
 
     async def on_find_best(self, msg: dict) -> None:
-        # Replaced by the real Best Blend Finder in C6.
-        await self.error(msg["request_id"], "internal", "find_best is not available yet")
+        request_id = msg["request_id"]
+        if request_id in self.active:
+            raise BadRequest(f"request_id {request_id} is already running")
+        try:
+            tasks = finder.validate_tasks(msg["tasks"])
+        except GenerationError as exc:
+            raise BadRequest(exc.message) from None
+        self.start(request_id, lambda stop: self.run_find_best(request_id, tasks, stop))
+
+    async def run_find_best(self, request_id: str, tasks: list, stop: threading.Event) -> None:
+        async def progress(step: int, of: int, blend_id: str) -> None:
+            await self.send(
+                {"type": "progress", "request_id": request_id, "step": step, "of": of, "blend_id": blend_id}
+            )
+
+        try:
+            best, scores = await finder.find_best(self.app, tasks, stop, progress)
+            await self.send({"type": "result", "request_id": request_id, "best_blend_id": best, "scores": scores})
+        except GenerationError as exc:
+            await self.error(request_id, exc.code, exc.message)
+        except asyncio.CancelledError:
+            raise  # cancel() or disconnect; whoever cancelled us reports it
+        except Exception as exc:  # noqa: BLE001  never let one request kill the connection
+            await self.error(request_id, "internal", f"{type(exc).__name__}: {exc}")
+        finally:
+            stop.set()
+            self.active.pop(request_id, None)
 
     # ---- keep-alive -----------------------------------------------------
 

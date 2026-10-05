@@ -4,6 +4,7 @@
 
 fastapi==0.142.2
 uvicorn[standard]==0.54.0
+websockets==17.2  # also used by scripts/smoke_test.py
 pydantic-settings==2.15.0
 llama-cpp-python==0.3.36
 boto3==1.43.108

@@ -33,11 +33,13 @@ class TrackingLlm:
     def __init__(self, name: str, n_tokens: int = 3, delay: float = 0.02):
         self.name, self.n_tokens, self.delay = name, n_tokens, delay
         self.closed = False
+        self.calls: list[dict] = []  # kwargs of every create_chat_completion call
         self.active = 0
         self.max_active = 0
         self._guard = threading.Lock()
 
     def create_chat_completion(self, messages, max_tokens, temperature, stream):
+        self.calls.append({"max_tokens": max_tokens, "temperature": temperature, "stream": stream})
         with self._guard:
             self.active += 1
             self.max_active = max(self.max_active, self.active)
