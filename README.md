@@ -16,10 +16,9 @@ Blend a **writing model** and a **coding model** with SLERP, drag a handle along
      Save it as assets/hero.gif, then replace this comment with:
      <img src="assets/hero.gif" alt="BlendLab demo" width="860"> -->
 
-> 📸 **[ HERO GIF GOES HERE ]** · `assets/hero.gif` · slider drag, same prompt, three different answers
+>  · slider drag, same prompt, three different answers
 
-**[Live demo](#-live-demo)** · **[Quick start](#-quick-start)** · **[How it works](#-how-it-works)** · **[Results](#-results)** · **[Team](#-team)**
-
+**[Live demo](https://nap-in-a-boat.vercel.app/)** · 
 </div>
 
 ---
@@ -53,16 +52,12 @@ We precompute **eight blends**, serve them live, **measure every one**, and plot
 
 **A chat that tells you who's talking.** Every answer carries a chip: which blend, which quantization, how fast it ran.
 
-> 📸 `assets/screenshot-chat.png`
-> *chat with model chips and tokens/sec*
 
 </td>
 <td width="50%">
 
 **A wavy-line slider.** Writing model top-left, code model middle-right, a handle on the wave that snaps to real blends. A context-window meter rides along.
 
-> 📸 `assets/screenshot-slider.png`
-> *the wave slider with both model cards*
 
 </td>
 </tr>
@@ -71,16 +66,12 @@ We precompute **eight blends**, serve them live, **measure every one**, and plot
 
 **Compare mode.** One prompt, two blends, side by side.
 
-> 📸 `assets/screenshot-compare.png`
-> *poem on the left, code on the right*
 
 </td>
 <td>
 
 **The capability curve.** Code pass rate vs. writing style score for every blend, with the slider position marked and a big-model reference line.
 
-> 📸 `assets/screenshot-curve.png`
-> *dual-axis curve with the three layer-wise variants*
 
 </td>
 </tr>
@@ -89,16 +80,6 @@ We precompute **eight blends**, serve them live, **measure every one**, and plot
 
 **Best Blend Finder.** Paste up to three of *your* tasks; the server tests every blend and recommends one.
 
-> 📸 `assets/screenshot-finder.png`
-> *progress 1-8 then a ranked result*
-
-</td>
-<td>
-
-**Failures you can see.** Kill the server mid-answer: the page keeps your partial text, shows what happened, reconnects by itself, and lets you retry.
-
-> 📸 `assets/screenshot-reconnect.png`
-> *the "Connection lost" banner*
 
 </td>
 </tr>
@@ -196,13 +177,6 @@ Every number in this README comes from [`results/metrics.json`](results/metrics.
 - **Coding**: pass rate on unit-tested problems (MBPP sanitized, run in an isolated sandbox with a timeout and no network)
 - **Writing style**: scored by a judge model on our own prompts, plus a rhyme-and-meter checker
 - **Speed**: tokens per second
-
-> 📈 **[ RESULTS CHART GOES HERE ]** · `assets/curve.png`
-> *Fill this in after the full evaluation of all 8 blends. Do not paste numbers that are not in `results/metrics.json`.*
-
-> 🏆 **[ HEADLINE FINDING GOES HERE ]**
-> *Does a layer-wise variant beat every plain slider position? Does the middle break? Say what the data shows, including bad news.*
-
 ---
 
 ## 🧱 Project layout
@@ -229,8 +203,8 @@ python scripts/validate_repo.py   # schemas, no model files or secrets committed
 
 ## 🌊 Live demo
 
-> 🔗 **[ LIVE URL GOES HERE ]** · deployed on a DigitalOcean Droplet with Docker ([runbook](docker/DEPLOY.md))
-> 🎥 **[ BACKUP RECORDING LINK GOES HERE ]**
+> 🔗 **[ https://nap-in-a-boat.vercel.app/ ]** ·  
+> 🎥 **[ https://drive.google.com/file/d/1-95cKjrOo-gf8OZ8Hss4ALBcQk4UxYk_/view?usp=sharing ]**
 
 ---
 
