@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     metrics_path: str = "contracts/mocks/metrics.json"  # later: results/metrics.json
     scoring_module: str = "contracts.scoring"  # later: src.eval.scoring
     dev_model_override: str = ""  # one GGUF used for every blend_id; empty in production
+    fake_generator: bool = False  # stream a fixed sentence instead of running a model
     models_dir: str = "./local_models"
     max_loaded_models: int = 2
     web_dir: str = "web"

@@ -1,16 +1,20 @@
 # FastAPI app: REST endpoints (contract 4.3), startup validation, static frontend.
 import json
+import logging
 from contextlib import asynccontextmanager
 
 import jsonschema
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from src.server.generate import DevModelStreamer, fake_stream
+from src.server.generate import fake_stream
+from src.server.models import ModelManager
 from src.server.settings import ROOT, Settings
 from src.server.ws import router as ws_router
 
 SCHEMA_DIR = ROOT / "contracts" / "schemas"
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(message)s")
 
 
 class ConfigError(RuntimeError):
@@ -40,9 +44,6 @@ def load_checked(path, schema_name: str, label: str) -> dict:
 def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
     """`stream` replaces the token source (tests inject one); otherwise it follows the settings."""
     settings = settings or Settings()
-    if stream is None:
-        # Until the ModelManager lands (C4), only DEV_MODEL_OVERRIDE gives real tokens.
-        stream = DevModelStreamer(settings.dev_model_override) if settings.dev_model_override else fake_stream
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
@@ -53,17 +54,19 @@ def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
         app.state.metrics = load_checked(
             settings.resolve(settings.metrics_path), "metrics.schema.json", "Metrics"
         )
+        # Real tokens come from the ModelManager unless FAKE_GENERATOR is on (frontend/dev work).
+        app.state.manager = ModelManager(app.state.registry, settings)
+        app.state.stream = stream or (fake_stream if settings.fake_generator else app.state.manager.stream)
         yield
 
     app = FastAPI(title="BlendLab", lifespan=lifespan)
     app.state.settings = settings
-    app.state.stream = stream
     app.include_router(ws_router)
 
     @app.get("/health")
     async def health() -> dict:
-        # `loaded` lists blends currently in memory; the model manager fills it in (C4).
-        return {"status": "ok", "loaded": []}
+        manager = getattr(app.state, "manager", None)
+        return {"status": "ok", "loaded": manager.loaded if manager else []}
 
     @app.get("/api/registry")
     async def registry() -> dict:

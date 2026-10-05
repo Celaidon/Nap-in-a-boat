@@ -8,9 +8,11 @@ import threading
 import time
 
 import pytest
+from fastapi.testclient import TestClient
 
-from src.server.generate import DevModelStreamer, GenerationError, stream_tokens
+from src.server.generate import GenerationError, stream_tokens
 from src.server.main import create_app
+from src.server.models import ModelManager
 from src.server.settings import Settings
 from tests.server.conftest import collect
 
@@ -45,8 +47,12 @@ class FakeLlm:
             yield chunk(text=f"w{i} ")
 
 
-def fake_streamer(llm: FakeLlm) -> DevModelStreamer:
-    return DevModelStreamer("fake.gguf", loader=lambda path: llm)
+def use_fake_model(client, llm, loader=None) -> None:
+    """Point a running test app at a ModelManager that "loads" FakeLlm instead of a GGUF file."""
+    settings = Settings(_env_file=None, dev_model_override="fake.gguf")
+    manager = ModelManager(client.app.state.registry, settings, loader=loader or (lambda path: llm))
+    client.app.state.manager = manager
+    client.app.state.stream = manager.stream
 
 
 def gen_msg(request_id="r1", **extra) -> dict:
@@ -93,7 +99,7 @@ def test_inference_runs_off_the_event_loop_thread():
 
 def test_health_stays_fast_while_generating(make_client):
     client = make_client()
-    client.app.state.stream = fake_streamer(FakeLlm(60))  # about 3 s of blocking inference
+    use_fake_model(client, FakeLlm(60))  # about 3 s of blocking inference
     with client.websocket_connect("/ws") as ws:
         ws.send_json(gen_msg())
         assert ws.receive_json()["type"] == "token"  # generation is underway
@@ -112,7 +118,7 @@ def test_health_stays_fast_while_generating(make_client):
 
 def test_done_reports_sensible_speed(make_client):
     client = make_client()
-    client.app.state.stream = fake_streamer(FakeLlm(20))
+    use_fake_model(client, FakeLlm(20))
     with client.websocket_connect("/ws") as ws:
         ws.send_json(gen_msg())
         done = collect(ws, "r1")[-1]
@@ -125,17 +131,21 @@ def test_model_load_failure_is_internal_error(make_client):
         raise OSError("no such file")
 
     client = make_client()
-    client.app.state.stream = DevModelStreamer("missing.gguf", loader=bad_loader)
+    use_fake_model(client, None, loader=bad_loader)
     with client.websocket_connect("/ws") as ws:
         ws.send_json(gen_msg())
         last = collect(ws, "r1")[-1]
     assert last["type"] == "error" and last["code"] == "internal"
-    assert "Could not load model" in last["message"]
+    assert "Could not load sweep_050" in last["message"]
 
 
-def test_settings_pick_dev_streamer_when_override_set():
-    app = create_app(Settings(_env_file=None, dev_model_override="some.gguf"))
-    assert isinstance(app.state.stream, DevModelStreamer)
+def test_app_streams_through_model_manager_unless_fake_generator_is_on():
+    real = create_app(Settings(_env_file=None, dev_model_override="some.gguf", fake_generator=False))
+    with TestClient(real):
+        assert real.state.stream == real.state.manager.stream
+    fake = create_app(Settings(_env_file=None, fake_generator=True))
+    with TestClient(fake):
+        assert fake.state.stream is not fake.state.manager.stream
 
 
 # ---- real model (not run in CI) ---------------------------------------------
@@ -147,7 +157,7 @@ needs_model = pytest.mark.skipif(not pathlib.Path(REAL_MODEL).exists(), reason=f
 @pytest.mark.models
 @needs_model
 def test_real_model_streams_tokens(make_client):
-    client = make_client(dev_model_override=REAL_MODEL)
+    client = make_client(dev_model_override=REAL_MODEL, fake_generator=False)
     with client.websocket_connect("/ws") as ws:
         ws.send_json(gen_msg(prompt="Say hello in five words.", max_tokens=40, temperature=0))
         messages = collect(ws, "r1")
@@ -161,7 +171,7 @@ def test_real_model_streams_tokens(make_client):
 @pytest.mark.models
 @needs_model
 def test_real_model_health_stays_fast(make_client):
-    client = make_client(dev_model_override=REAL_MODEL)
+    client = make_client(dev_model_override=REAL_MODEL, fake_generator=False)
     with client.websocket_connect("/ws") as ws:
         ws.send_json(gen_msg(prompt="Write a long story about a boat.", max_tokens=200))
         assert ws.receive_json()["type"] == "token"
