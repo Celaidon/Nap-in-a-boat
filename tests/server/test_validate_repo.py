@@ -91,3 +91,10 @@ def test_oversized_file_is_rejected(repo, capsys):
     repo.add("results/huge.dat", b"x" * (validate_repo.MAX_FILE_BYTES + 1))
     assert validate_repo.main(repo.path) == 1
     assert "over 5 MB" in capsys.readouterr().out
+
+
+def test_problems_become_github_annotations_in_ci(repo, capsys, monkeypatch):
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    repo.add("models/sweep_050.gguf", b"fake weights")
+    assert validate_repo.main(repo.path) == 1
+    assert "::error title=Repo check failed::models/sweep_050.gguf" in capsys.readouterr().out

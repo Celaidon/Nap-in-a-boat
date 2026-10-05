@@ -9,6 +9,7 @@ Exits 0 when clean, 1 with one line per problem otherwise.
 """
 
 import json
+import os
 import pathlib
 import subprocess
 import sys
@@ -73,6 +74,8 @@ def main(root: pathlib.Path = ROOT) -> int:
     problems = check_data_files(root) + check_tracked_files(root)
     for problem in problems:
         print(f"FAIL  {problem}")
+        if os.environ.get("GITHUB_ACTIONS") == "true":
+            print(f"::error title=Repo check failed::{problem}")  # shows on the run page without opening logs
     return 1 if problems else 0
 
 
