@@ -10,3 +10,20 @@ jobs:
       - run: pip install -r requirements/server.txt
       - run: ruff check .
       - run: pytest -q -m "not models"
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Build the image (no models inside)
+        run: docker build -f docker/Dockerfile -t blendlab:ci .
+      - name: Run it with the mock files and smoke-test it
+        run: |
+          docker run -d --name blendlab -p 8000:8000             -e REGISTRY_PATH=contracts/mocks/registry.json             -e METRICS_PATH=contracts/mocks/metrics.json             -e SCORING_MODULE=contracts.scoring             -e FAKE_GENERATOR=true             blendlab:ci
+          for i in $(seq 1 30); do curl -sf http://localhost:8000/health && break; sleep 1; done
+          pip install websockets==17.2
+          python scripts/smoke_test.py http://localhost:8000 --tokens 10
+      - name: Container logs
+        if: failure()
+        run: docker logs blendlab

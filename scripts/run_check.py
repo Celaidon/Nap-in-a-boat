@@ -20,6 +20,7 @@ CHECK_TESTS = {
     "C4": ["tests/server/test_models.py"],
     "C5": ["tests/server/test_disconnect.py"],
     "C6": ["tests/server/test_finder.py"],
+    "C7": ["tests/server/test_smoke.py"],
 }
 
 
