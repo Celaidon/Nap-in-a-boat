@@ -20,7 +20,6 @@ from collections.abc import Generator
 
 from dotenv import load_dotenv
 from huggingface_hub import snapshot_download
-from safetensors import safe_open
 from transformers import AutoTokenizer
 
 from contracts.record_check import record_check
@@ -114,6 +113,7 @@ def compare_tokenizers(dir_a: pathlib.Path, dir_b: pathlib.Path) -> list[str]:
 
 
 import struct
+
 
 def iter_tensor_shapes(model_dir: pathlib.Path) -> Generator[tuple[str, list[int]], None, None]:
     """Yield (tensor_name, shape) by parsing the .safetensors JSON header directly.

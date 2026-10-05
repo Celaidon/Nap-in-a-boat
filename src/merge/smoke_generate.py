@@ -1,11 +1,13 @@
 # src/merge/smoke_generate.py
 # Check A2/A4: Test merged models by generating greedy answers for 5 fixed prompts.
 
+import pathlib
 import sys
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
 from contracts.record_check import record_check
-import pathlib
 
 PROMPTS = [
     # 2 Coding Prompts

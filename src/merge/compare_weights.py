@@ -4,9 +4,12 @@
 
 import pathlib
 import sys
+
 import torch
 from safetensors import safe_open
+
 from contracts.record_check import record_check
+
 
 def get_tensor_map(model_dir: pathlib.Path):
     """Returns a dict mapping tensor_name -> shard_path."""
@@ -42,8 +45,7 @@ def compare_models(dir_original: pathlib.Path, dir_merged: pathlib.Path) -> floa
             
             # Max absolute difference
             diff = torch.max(torch.abs(t_orig - t_merged)).item()
-            if diff > max_diff:
-                max_diff = diff
+            max_diff = max(max_diff, diff)
                 
         if (i + 1) % 50 == 0:
             print(f"  Checked {i + 1} tensors... current max diff = {max_diff:.8f}")
