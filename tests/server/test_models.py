@@ -42,7 +42,7 @@ class TrackingLlm:
             self.active += 1
             self.max_active = max(self.max_active, self.active)
         try:
-            for i in range(self.n_tokens):
+            for i in range(min(self.n_tokens, max_tokens)):
                 time.sleep(self.delay)
                 yield {"choices": [{"delta": {"content": f"{self.name}{i} "}}]}
         finally:
@@ -56,10 +56,11 @@ class TrackingLlm:
 class Harness:
     """A ModelManager wired to fakes, with a call log."""
 
-    def __init__(self, tmp_path, corrupt=(), **settings):
+    def __init__(self, tmp_path, corrupt=(), llm_tokens=3, **settings):
         self.downloads: list[str] = []
         self.loaded_llms: dict[str, TrackingLlm] = {}
         self.corrupt = set(corrupt)  # blend ids whose downloaded bytes are wrong
+        self.llm_tokens = llm_tokens
         self.settings = Settings(_env_file=None, models_dir=str(tmp_path), **settings)
         self.manager = ModelManager(
             make_registry(), self.settings, loader=self.load, downloader=self.download
@@ -72,7 +73,7 @@ class Harness:
 
     def load(self, path):
         name = path.rsplit("\\", 1)[-1].rsplit("/", 1)[-1].removesuffix("-Q4_K_M.gguf")
-        llm = TrackingLlm(name)
+        llm = TrackingLlm(name, n_tokens=self.llm_tokens)
         self.loaded_llms[name] = llm
         return llm
 
