@@ -1,0 +1,21 @@
+{
+  "check_id": "C9",
+  "status": "pass",
+  "owner": "sharva",
+  "timestamp": "2026-10-05T06:10:41.713270+00:00",
+  "code_commit": "4e47860",
+  "details": {
+    "tests": [
+      "tests/server/test_validate_repo.py"
+    ],
+    "pytest_summary": "11 passed, 1 warning in 3.87s",
+    "ci_proof": {
+      "clean_branch": "green: https://github.com/Celaidon/Nap-in-a-boat/actions/runs/37270862113",
+      "broken_registry": "red at step Contract schemas, committed data and repo hygiene: run 37270879503",
+      "tracked_gguf": "red at the same step: run 37270889944",
+      "failing_pytest_test": "red at the pytest step, earlier steps green: run 37270984579",
+      "note": "the 3 throwaway branches were deleted after the runs"
+    },
+    "pr_template": "added at .github/pull_request_template.md; GitHub only shows it on new PRs once it is on main, so it cannot be seen before merge"
+  }
+}

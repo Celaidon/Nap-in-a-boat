@@ -1,0 +1,8 @@
+# Optional: automatic HTTPS in front of the container. Needs a domain pointing at the Droplet.
+# Run the container on port 8000 instead of 80 (PORT=8000 deploy.sh), install Caddy, then:
+#   cp Caddyfile.example /etc/caddy/Caddyfile   # edit the domain
+#   systemctl reload caddy
+# WebSockets (/ws) work through reverse_proxy with no extra settings.
+blendlab.example.com {
+    reverse_proxy 127.0.0.1:8000
+}
