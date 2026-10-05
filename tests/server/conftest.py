@@ -1,5 +1,6 @@
 # Shared helpers for the server tests.
 import json
+import os
 import socket
 import threading
 import time
@@ -73,3 +74,11 @@ def live_server():
     yield f"http://127.0.0.1:{port}"
     server.should_exit = True
     thread.join(timeout=5)
+
+
+@pytest.fixture(autouse=True)
+def _clean_server_env(monkeypatch):
+    """Other tests (the judge) load the repo's .env into os.environ. Server tests must not see it."""
+    for name in list(os.environ):
+        if name.startswith(("SIM_", "CORS_")) or name in {"DEV_MODEL_OVERRIDE", "FAKE_GENERATOR"}:
+            monkeypatch.delenv(name)

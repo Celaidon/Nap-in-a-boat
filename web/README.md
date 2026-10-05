@@ -35,3 +35,16 @@ cd web && npm run dev
 | `src/styles/` | Design tokens (colours, type, spacing) and the stylesheet |
 
 Colours and type come from the Nap in a Boat deck: deep maroon, blush pink, one gold accent, Anton for headings, DM Sans for text.
+
+## Hosting the frontend on Vercel (or any static host)
+
+Vercel serves only the static files; the FastAPI server (WebSocket and models) must run somewhere else.
+Set these in Vercel: Project Settings, Environment Variables, then redeploy.
+
+| Goal | Variable |
+|---|---|
+| Demo with built-in fake data (works with no backend) | `VITE_FORCE_MOCK=1` |
+| Use a real backend on another host | `VITE_API_BASE=https://your-server` (needs https so the WebSocket is wss) |
+
+With a real backend also set `CORS_ORIGINS=https://nap-in-a-boat.vercel.app` in the server's `.env`.
+Vercel build settings: Root Directory `web`, Build Command `npm run build`, Output Directory `dist`.

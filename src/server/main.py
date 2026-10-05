@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 
 import jsonschema
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from src.server.generate import fake_session, fake_stream
@@ -83,6 +84,9 @@ def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
     app = FastAPI(title="BlendLab", lifespan=lifespan)
     app.state.settings = settings
     app.state.finder_running = False  # only one Best Blend Finder run at a time
+    origins = [o.strip() for o in settings.cors_origins.split(",") if o.strip()]
+    if origins:  # only the listed frontends may call the REST API from a browser
+        app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["GET"], allow_headers=["*"])
     app.include_router(ws_router)
 
     @app.get("/health")
