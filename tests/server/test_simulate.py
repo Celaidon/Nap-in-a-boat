@@ -69,7 +69,7 @@ def test_streams_provider_text_through_the_websocket(served):
 def test_blend_position_picks_model_and_style():
     sim = ApiSimulator(settings(), {"blends": [{"id": "a", "t": 0}, {"id": "b", "t": 0.25}, {"id": "c", "t": 0.5}, {"id": "d", "t": 0.75}]})
     assert sim.route("a")[0] == "w-model" and "creative writing" in sim.route("a")[1]
-    assert sim.route("b")[0] == "w-model" and "75% expressive writing and 25%" in sim.route("b")[1]
+    assert sim.route("b")[0] == "w-model" and "75% expressive prose, 25% precise code" in sim.route("b")[1]
     assert sim.route("c")[0] == "w-model"
     assert sim.route("d")[0] == "c-model"
 
@@ -108,3 +108,25 @@ def test_refuses_to_start_without_a_key():
 def test_refuses_to_start_without_a_model_name():
     with pytest.raises(ValueError, match="SIM_WRITING_MODEL"):
         ApiSimulator(settings(sim_writing_model=""), {"blends": []})
+
+
+def test_reasoning_models_are_asked_to_think_briefly():
+    from src.server.simulate import provider_quirks
+
+    assert provider_quirks("openai/gpt-oss-20b") == {"reasoning_effort": "low"}
+    assert provider_quirks("qwen/qwen3.8-27b") == {"reasoning_effort": "none"}
+    assert provider_quirks("llama-3.3-70b-versatile") == {}
+
+
+def test_reasoning_models_get_headroom_but_visible_text_is_capped():
+    import asyncio
+
+    cfg = settings(sim_writing_model="openai/gpt-oss-20b")
+    provider = Provider()
+    sim = ApiSimulator(cfg, {"blends": [{"id": "x", "t": 0.25}]}, httpx.MockTransport(provider))
+
+    async def go():
+        return [p async for p in sim.stream("x", "hi", 1, 0.5, threading.Event())]
+
+    assert asyncio.run(go()) == ["Soft "]  # the provider sent two pieces, only max_tokens=1 is shown
+    assert provider.requests[0][1]["max_tokens"] == 1 + 800
