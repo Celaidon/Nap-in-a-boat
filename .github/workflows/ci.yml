@@ -25,6 +25,8 @@ jobs:
           for f in requirements/merge.txt requirements/eval.txt; do
             if [ -s "$f" ]; then pip install -r "$f"; fi
           done
+      - name: Pre-pull the image Track B's code sandbox runs in (the first pull is slower than its timeout)
+        run: docker pull python:3.11-slim
       - run: ruff check . --output-format=github
       - name: Contract schemas, committed data and repo hygiene
         run: python scripts/validate_repo.py
