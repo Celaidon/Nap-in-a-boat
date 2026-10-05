@@ -6,7 +6,9 @@ import jsonschema
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+from src.server.generate import fake_stream
 from src.server.settings import ROOT, Settings
+from src.server.ws import router as ws_router
 
 SCHEMA_DIR = ROOT / "contracts" / "schemas"
 
@@ -51,6 +53,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app = FastAPI(title="BlendLab", lifespan=lifespan)
     app.state.settings = settings
+    app.state.stream = fake_stream  # swapped for the real model streamer in C3
+    app.include_router(ws_router)
 
     @app.get("/health")
     async def health() -> dict:
