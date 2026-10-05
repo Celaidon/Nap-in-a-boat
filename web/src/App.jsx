@@ -11,6 +11,9 @@ import { CurvePanel } from './components/CurvePanel.jsx'
 import { FinderPanel } from './components/FinderPanel.jsx'
 import { TopBar } from './components/TopBar.jsx'
 
+// Rough size of the conversation in tokens (about 4 characters each), shown against the 4096-token window.
+const estimateContext = (turns) => Math.round(turns.reduce((sum, turn) => sum + turn.prompt.length + (turn.outputs[0]?.text.length ?? 0), 0) / 4)
+
 const TITLES = { curve: 'Capability curve', finder: 'Find the best blend' }
 
 export default function App() {
@@ -42,12 +45,12 @@ export default function App() {
               </div>
             ) : (
               <>
+                <BlendDock
+                  blends={state.blends} pair={state.pair} blendId={state.blendId} compareId={state.compareId} metrics={state.metrics}
+                  contextUsed={estimateContext(state.turns)} onSelect={chat.selectBlend} onCompare={chat.setCompare}
+                />
                 <Chat turns={state.turns} blends={state.blends} ready={ready} onSend={chat.send} onRetry={chat.retry} />
                 <div className="foot">
-                  <BlendDock
-                    blends={state.blends} blendId={state.blendId} compareId={state.compareId} metrics={state.metrics}
-                    onSelect={chat.selectBlend} onCompare={chat.setCompare}
-                  />
                   <Composer placeholder={placeholder} ready={ready} streaming={chat.streaming} onSend={chat.send} onStop={chat.stop} />
                   <p className="fineprint">Answers come from merged open models and can be wrong. Mid-range blends sometimes produce odd text.</p>
                 </div>

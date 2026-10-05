@@ -51,6 +51,7 @@ describe('blend selection', () => {
   it('selects a layer-wise variant', async () => {
     render(<App />)
     await ready()
+    fireEvent.click(screen.getByRole('button', { name: 'Variants & stats' }))
     fireEvent.click(screen.getByRole('button', { name: 'Gradient' }))
     expect(slider()).toHaveAttribute('aria-valuetext', 'Gradient')
     expect(screen.getByRole('button', { name: 'Gradient' })).toHaveAttribute('aria-pressed', 'true')
@@ -59,8 +60,35 @@ describe('blend selection', () => {
   it('shows the measured numbers for the chosen blend', async () => {
     render(<App />)
     await ready()
+    fireEvent.click(screen.getByRole('button', { name: 'Variants & stats' }))
     const stats = screen.getByLabelText('Measured results for this blend')
     expect(within(stats).getByText('42%')).toBeInTheDocument() // sweep_050 code pass in the mock metrics
+  })
+})
+
+describe('blend area', () => {
+  it('shows both models, the share of each, and the context window', async () => {
+    render(<App />)
+    await ready()
+    expect(screen.getByText('gemma-1.1-7b-it')).toBeInTheDocument()
+    expect(screen.getByText('codegemma-7b-it')).toBeInTheDocument()
+    fireEvent.keyDown(slider(), { key: 'End' })
+    expect(screen.getByRole('button', { name: /Code model/ })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByLabelText(/Context window: about 0 of 4096/)).toBeInTheDocument()
+  })
+
+  it('picks a pure model by clicking its card', async () => {
+    render(<App />)
+    await ready()
+    fireEvent.click(screen.getByRole('button', { name: /Writing model/ }))
+    expect(slider()).toHaveAttribute('aria-valuetext', 'Writing model')
+  })
+
+  it('counts the conversation against the context window', async () => {
+    render(<App />)
+    await ready()
+    await ask('hello there')
+    await waitFor(() => expect(screen.getByLabelText(/Context window: about [1-9]\d* of 4096/)).toBeInTheDocument(), { timeout: 4000 })
   })
 })
 
@@ -80,7 +108,7 @@ describe('chatting', () => {
   it('sends one prompt to two blends in compare mode', async () => {
     render(<App />)
     await ready()
-    fireEvent.click(screen.getByRole('button', { name: 'Compare with another' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Compare' }))
     await ask('hello')
     await waitFor(() => expect(document.querySelectorAll('.answer-done')).toHaveLength(2), { timeout: 5000 })
   })
