@@ -103,3 +103,8 @@ def test_finder_session_returns_full_text():
 def test_refuses_to_start_without_a_key():
     with pytest.raises(ValueError, match="SIM_API_KEY"):
         ApiSimulator(settings(sim_api_key=""), {"blends": []})
+
+
+def test_refuses_to_start_without_a_model_name():
+    with pytest.raises(ValueError, match="SIM_WRITING_MODEL"):
+        ApiSimulator(settings(sim_writing_model=""), {"blends": []})
