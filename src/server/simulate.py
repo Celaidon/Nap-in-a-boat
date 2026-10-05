@@ -22,6 +22,8 @@ class ApiSimulator:
     def __init__(self, settings, registry: dict, transport: httpx.BaseTransport | None = None):
         if settings.sim_provider not in PRESETS and not settings.sim_base_url:
             raise ValueError(f"SIM_PROVIDER must be one of {sorted(PRESETS)} or SIM_BASE_URL must be set")
+        if not settings.sim_writing_model.strip():
+            raise ValueError("SIM_WRITING_MODEL is empty. Set it in .env to a model id from your provider's model list.")
         if not settings.sim_api_key:
             raise ValueError("SIM_API_KEY is empty. Put the key in .env, never in the repo.")
         self.base = (settings.sim_base_url or PRESETS[settings.sim_provider]).rstrip("/")
