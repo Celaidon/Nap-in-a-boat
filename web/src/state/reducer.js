@@ -6,6 +6,7 @@
 export const initialState = {
   blends: [],
   pair: null,
+  simulated: null, // set when the server answers from a hosted API instead of merged weights
   metrics: null,
   loadError: null,
   blendId: null,
@@ -28,7 +29,7 @@ export function reducer(state, action) {
       // Keep an earlier choice if it is still valid, else start at the middle blend.
       const keep = stops.some((b) => b.id === state.blendId) ? state.blendId : null
       const middle = stops.find((b) => b.id === 'sweep_050') ?? stops[0]
-      return { ...state, blends: stops, pair: action.registry.pair, metrics: action.metrics, loadError: null, blendId: keep ?? middle?.id ?? null }
+      return { ...state, blends: stops, pair: action.registry.pair, simulated: action.simulated ?? null, metrics: action.metrics, loadError: null, blendId: keep ?? middle?.id ?? null }
     }
     case 'load_failed':
       return { ...state, loadError: action.message }

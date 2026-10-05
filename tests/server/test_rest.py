@@ -23,7 +23,7 @@ def client():
 def test_health(client):
     r = client.get("/health")
     assert r.status_code == 200
-    assert r.json() == {"status": "ok", "loaded": []}
+    assert r.json() == {"status": "ok", "loaded": [], "simulated": None}
 
 
 def test_registry_matches_schema(client):
