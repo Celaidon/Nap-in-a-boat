@@ -1,0 +1,790 @@
+{
+  "blend_id": "sweep_000",
+  "gguf_path": null,
+  "evaluated_at": "2026-10-05T07:23:51Z",
+  "n_code": 55,
+  "n_style": 20,
+  "code_pass": 0.0,
+  "style_score": 6.6,
+  "rhyme_score": 0.98,
+  "tokens_per_sec": 10533.33,
+  "code_results": [
+    {
+      "id": "mbpp_16",
+      "entry_point": "text_lowercase_underscore",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp5oii2wh9\\solution.py\", line 9, in <module>\n    assert text_lowercase_underscore(\"aab_cbbbc\")==(True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'text_lowercase_underscore' is not defined"
+    },
+    {
+      "id": "mbpp_18",
+      "entry_point": "remove_dirty_chars",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpwhvz2iyr\\solution.py\", line 9, in <module>\n    assert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'\n           ^^^^^^^^^^^^^^^^^^\nNameError: name 'remove_dirty_chars' is not defined"
+    },
+    {
+      "id": "mbpp_57",
+      "entry_point": "find_Max_Num",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpl68l_b82\\solution.py\", line 9, in <module>\n    assert find_Max_Num([1,2,3]) == 321\n           ^^^^^^^^^^^^\nNameError: name 'find_Max_Num' is not defined"
+    },
+    {
+      "id": "mbpp_64",
+      "entry_point": "subject_marks",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpekej8375\\solution.py\", line 9, in <module>\n    assert subject_marks([('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])==[('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]\n           ^^^^^^^^^^^^^\nNameError: name 'subject_marks' is not defined"
+    },
+    {
+      "id": "mbpp_70",
+      "entry_point": "get_equal",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpyjyn_r7t\\solution.py\", line 9, in <module>\n    assert get_equal([(11, 22, 33), (44, 55, 66)]) == True\n           ^^^^^^^^^\nNameError: name 'get_equal' is not defined"
+    },
+    {
+      "id": "mbpp_79",
+      "entry_point": "word_len",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp_0rj7yxe\\solution.py\", line 9, in <module>\n    assert word_len(\"Hadoop\") == False\n           ^^^^^^^^\nNameError: name 'word_len' is not defined"
+    },
+    {
+      "id": "mbpp_80",
+      "entry_point": "tetrahedral_number",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpcoftm5ap\\solution.py\", line 9, in <module>\n    assert tetrahedral_number(5) == 35\n           ^^^^^^^^^^^^^^^^^^\nNameError: name 'tetrahedral_number' is not defined"
+    },
+    {
+      "id": "mbpp_82",
+      "entry_point": "volume_sphere",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpj_4yyb9o\\solution.py\", line 10, in <module>\n    assert math.isclose(volume_sphere(10), 4188.790204786391, rel_tol=0.001)\n                        ^^^^^^^^^^^^^\nNameError: name 'volume_sphere' is not defined"
+    },
+    {
+      "id": "mbpp_97",
+      "entry_point": "frequency_lists",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpxrkc21ac\\solution.py\", line 9, in <module>\n    assert frequency_lists([[1, 2, 3, 2], [4, 5, 6, 2], [7, 8, 9, 5]])=={1: 1, 2: 3, 3: 1, 4: 1, 5: 2, 6: 1, 7: 1, 8: 1, 9: 1}\n           ^^^^^^^^^^^^^^^\nNameError: name 'frequency_lists' is not defined"
+    },
+    {
+      "id": "mbpp_98",
+      "entry_point": "multiply_num",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmph4th34xs\\solution.py\", line 10, in <module>\n    assert math.isclose(multiply_num((8, 2, 3, -1, 7)), -67.2, rel_tol=0.001)\n                        ^^^^^^^^^^^^\nNameError: name 'multiply_num' is not defined"
+    },
+    {
+      "id": "mbpp_104",
+      "entry_point": "sort_sublists",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp0e2_w0ud\\solution.py\", line 9, in <module>\n    assert sort_sublists(([\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]))==[['green', 'orange'], ['black', 'white'], ['black', 'orange', 'white']]\n           ^^^^^^^^^^^^^\nNameError: name 'sort_sublists' is not defined"
+    },
+    {
+      "id": "mbpp_117",
+      "entry_point": "list_to_float",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpgjc__0gf\\solution.py\", line 9, in <module>\n    assert list_to_float( [(\"3\", \"4\"), (\"1\", \"26.45\"), (\"7.32\", \"8\"), (\"4\", \"8\")] ) == [(3.0, 4.0), (1.0, 26.45), (7.32, 8.0), (4.0, 8.0)]\n           ^^^^^^^^^^^^^\nNameError: name 'list_to_float' is not defined"
+    },
+    {
+      "id": "mbpp_118",
+      "entry_point": "string_to_list",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp4l9z6uss\\solution.py\", line 9, in <module>\n    assert string_to_list(\"python programming\")==['python','programming']\n           ^^^^^^^^^^^^^^\nNameError: name 'string_to_list' is not defined"
+    },
+    {
+      "id": "mbpp_125",
+      "entry_point": "find_length",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpkc3z2qrw\\solution.py\", line 9, in <module>\n    assert find_length(\"11000010001\") == 6\n           ^^^^^^^^^^^\nNameError: name 'find_length' is not defined"
+    },
+    {
+      "id": "mbpp_131",
+      "entry_point": "reverse_vowels",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpbkofkggr\\solution.py\", line 9, in <module>\n    assert reverse_vowels(\"Python\") == \"Python\"\n           ^^^^^^^^^^^^^^\nNameError: name 'reverse_vowels' is not defined"
+    },
+    {
+      "id": "mbpp_139",
+      "entry_point": "circle_circumference",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmptbjw21mp\\solution.py\", line 10, in <module>\n    assert math.isclose(circle_circumference(10), 62.830000000000005, rel_tol=0.001)\n                        ^^^^^^^^^^^^^^^^^^^^\nNameError: name 'circle_circumference' is not defined"
+    },
+    {
+      "id": "mbpp_140",
+      "entry_point": "set",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpk03ks85a\\solution.py\", line 9, in <module>\n    assert set(extract_singly([(3, 4, 5), (4, 5, 7), (1, 4)])) == set([3, 4, 5, 7, 1])\n               ^^^^^^^^^^^^^^\nNameError: name 'extract_singly' is not defined"
+    },
+    {
+      "id": "mbpp_160",
+      "entry_point": "find_solution",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpecs7wlkc\\solution.py\", line 9, in <module>\n    assert find_solution(2, 3, 7) == (2, 1)\n           ^^^^^^^^^^^^^\nNameError: name 'find_solution' is not defined"
+    },
+    {
+      "id": "mbpp_161",
+      "entry_point": "remove_elements",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpva6gwx8o\\solution.py\", line 9, in <module>\n    assert remove_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [2, 4, 6, 8]) == [1, 3, 5, 7, 9, 10]\n           ^^^^^^^^^^^^^^^\nNameError: name 'remove_elements' is not defined"
+    },
+    {
+      "id": "mbpp_165",
+      "entry_point": "count_char_position",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp_z4yz6jw\\solution.py\", line 9, in <module>\n    assert count_char_position(\"xbcefg\") == 2\n           ^^^^^^^^^^^^^^^^^^^\nNameError: name 'count_char_position' is not defined"
+    },
+    {
+      "id": "mbpp_226",
+      "entry_point": "odd_values_string",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpp9f6_5_p\\solution.py\", line 9, in <module>\n    assert odd_values_string('abcdef') == 'ace'\n           ^^^^^^^^^^^^^^^^^\nNameError: name 'odd_values_string' is not defined"
+    },
+    {
+      "id": "mbpp_227",
+      "entry_point": "min_of_three",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp_25vi6nk\\solution.py\", line 9, in <module>\n    assert min_of_three(10,20,0)==0\n           ^^^^^^^^^^^^\nNameError: name 'min_of_three' is not defined"
+    },
+    {
+      "id": "mbpp_230",
+      "entry_point": "replace_blank",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp9_k3dj5f\\solution.py\", line 9, in <module>\n    assert replace_blank(\"hello people\",'@')==(\"hello@people\")\n           ^^^^^^^^^^^^^\nNameError: name 'replace_blank' is not defined"
+    },
+    {
+      "id": "mbpp_233",
+      "entry_point": "lateralsuface_cylinder",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpqz4onwpf\\solution.py\", line 10, in <module>\n    assert math.isclose(lateralsuface_cylinder(10,5), 314.15000000000003, rel_tol=0.001)\n                        ^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'lateralsuface_cylinder' is not defined"
+    },
+    {
+      "id": "mbpp_240",
+      "entry_point": "replace_list",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpz2h59l80\\solution.py\", line 9, in <module>\n    assert replace_list([1, 3, 5, 7, 9, 10],[2, 4, 6, 8])==[1, 3, 5, 7, 9, 2, 4, 6, 8]\n           ^^^^^^^^^^^^\nNameError: name 'replace_list' is not defined"
+    },
+    {
+      "id": "mbpp_244",
+      "entry_point": "next_Perfect_Square",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpw217aq88\\solution.py\", line 9, in <module>\n    assert next_Perfect_Square(35) == 36\n           ^^^^^^^^^^^^^^^^^^^\nNameError: name 'next_Perfect_Square' is not defined"
+    },
+    {
+      "id": "mbpp_250",
+      "entry_point": "count_X",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmprxprzgdt\\solution.py\", line 9, in <module>\n    assert count_X((10, 8, 5, 2, 10, 15, 10, 8, 5, 8, 8, 2),4) == 0\n           ^^^^^^^\nNameError: name 'count_X' is not defined"
+    },
+    {
+      "id": "mbpp_261",
+      "entry_point": "division_elements",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpbmyu9m43\\solution.py\", line 9, in <module>\n    assert division_elements((10, 4, 6, 9),(5, 2, 3, 3)) == (2, 2, 2, 3)\n           ^^^^^^^^^^^^^^^^^\nNameError: name 'division_elements' is not defined"
+    },
+    {
+      "id": "mbpp_264",
+      "entry_point": "dog_age",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpjp_ky2os\\solution.py\", line 9, in <module>\n    assert dog_age(12)==61\n           ^^^^^^^\nNameError: name 'dog_age' is not defined"
+    },
+    {
+      "id": "mbpp_265",
+      "entry_point": "list_split",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpe5a9aee_\\solution.py\", line 9, in <module>\n    assert list_split(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'],3)==[['a', 'd', 'g', 'j', 'm'], ['b', 'e', 'h', 'k', 'n'], ['c', 'f', 'i', 'l']]\n           ^^^^^^^^^^\nNameError: name 'list_split' is not defined"
+    },
+    {
+      "id": "mbpp_268",
+      "entry_point": "find_star_num",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpylcx2xb9\\solution.py\", line 9, in <module>\n    assert find_star_num(3) == 37\n           ^^^^^^^^^^^^^\nNameError: name 'find_star_num' is not defined"
+    },
+    {
+      "id": "mbpp_293",
+      "entry_point": "otherside_rightangle",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpkkfzoe2v\\solution.py\", line 9, in <module>\n    assert otherside_rightangle(7,8)==10.63014581273465\n           ^^^^^^^^^^^^^^^^^^^^\nNameError: name 'otherside_rightangle' is not defined"
+    },
+    {
+      "id": "mbpp_304",
+      "entry_point": "find_Element",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmphj_wfgw4\\solution.py\", line 9, in <module>\n    assert find_Element([1,2,3,4,5],[[0,2],[0,3]],2,1) == 3\n           ^^^^^^^^^^^^\nNameError: name 'find_Element' is not defined"
+    },
+    {
+      "id": "mbpp_311",
+      "entry_point": "set_left_most_unset_bit",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpqgki_0yg\\solution.py\", line 9, in <module>\n    assert set_left_most_unset_bit(10) == 14\n           ^^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'set_left_most_unset_bit' is not defined"
+    },
+    {
+      "id": "mbpp_391",
+      "entry_point": "convert_list_dictionary",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpnv3i4l99\\solution.py\", line 9, in <module>\n    assert convert_list_dictionary([\"S001\", \"S002\", \"S003\", \"S004\"],[\"Adina Park\", \"Leyton Marsh\", \"Duncan Boyle\", \"Saim Richards\"] ,[85, 98, 89, 92])==[{'S001': {'Adina Park': 85}}, {'S002': {'Leyton Marsh': 98}}, {'S003': {'Duncan Boyle': 89}}, {'S004': {'Saim Richards': 92}}]\n           ^^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'convert_list_dictionary' is not defined"
+    },
+    {
+      "id": "mbpp_396",
+      "entry_point": "check_char",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpivtxtsex\\solution.py\", line 9, in <module>\n    assert check_char(\"abba\") == \"Valid\"\n           ^^^^^^^^^^\nNameError: name 'check_char' is not defined"
+    },
+    {
+      "id": "mbpp_399",
+      "entry_point": "bitwise_xor",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp8aneqncu\\solution.py\", line 9, in <module>\n    assert bitwise_xor((10, 4, 6, 9), (5, 2, 3, 3)) == (15, 6, 5, 10)\n           ^^^^^^^^^^^\nNameError: name 'bitwise_xor' is not defined"
+    },
+    {
+      "id": "mbpp_400",
+      "entry_point": "extract_freq",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmptit7e4hj\\solution.py\", line 9, in <module>\n    assert extract_freq([(3, 4), (1, 2), (4, 3), (5, 6)] ) == 3\n           ^^^^^^^^^^^^\nNameError: name 'extract_freq' is not defined"
+    },
+    {
+      "id": "mbpp_407",
+      "entry_point": "rearrange_bigger",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpd18no_jw\\solution.py\", line 9, in <module>\n    assert rearrange_bigger(12)==21\n           ^^^^^^^^^^^^^^^^\nNameError: name 'rearrange_bigger' is not defined"
+    },
+    {
+      "id": "mbpp_409",
+      "entry_point": "min_product_tuple",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpnb0rrl1a\\solution.py\", line 9, in <module>\n    assert min_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==8\n           ^^^^^^^^^^^^^^^^^\nNameError: name 'min_product_tuple' is not defined"
+    },
+    {
+      "id": "mbpp_413",
+      "entry_point": "extract_nth_element",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpj6fq8bye\\solution.py\", line 9, in <module>\n    assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,0)==['Greyson Fulton', 'Brady Kent', 'Wyatt Knott', 'Beau Turnbull']\n           ^^^^^^^^^^^^^^^^^^^\nNameError: name 'extract_nth_element' is not defined"
+    },
+    {
+      "id": "mbpp_420",
+      "entry_point": "cube_Sum",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpbv9od857\\solution.py\", line 9, in <module>\n    assert cube_Sum(2) == 72\n           ^^^^^^^^\nNameError: name 'cube_Sum' is not defined"
+    },
+    {
+      "id": "mbpp_422",
+      "entry_point": "find_Average_Of_Cube",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpsct6lo65\\solution.py\", line 9, in <module>\n    assert find_Average_Of_Cube(2) == 4.5\n           ^^^^^^^^^^^^^^^^^^^^\nNameError: name 'find_Average_Of_Cube' is not defined"
+    },
+    {
+      "id": "mbpp_424",
+      "entry_point": "extract_rear",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpfg5wrz9s\\solution.py\", line 9, in <module>\n    assert extract_rear(('Mers', 'for', 'Vers') ) == ['s', 'r', 's']\n           ^^^^^^^^^^^^\nNameError: name 'extract_rear' is not defined"
+    },
+    {
+      "id": "mbpp_427",
+      "entry_point": "change_date_format",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp5mfw_7k2\\solution.py\", line 9, in <module>\n    assert change_date_format(\"2026-01-02\") == '02-01-2026'\n           ^^^^^^^^^^^^^^^^^^\nNameError: name 'change_date_format' is not defined"
+    },
+    {
+      "id": "mbpp_428",
+      "entry_point": "shell_sort",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpcgcvitva\\solution.py\", line 9, in <module>\n    assert shell_sort([12, 23, 4, 5, 3, 2, 12, 81, 56, 95]) == [2, 3, 4, 5, 12, 12, 23, 56, 81, 95]\n           ^^^^^^^^^^\nNameError: name 'shell_sort' is not defined"
+    },
+    {
+      "id": "mbpp_436",
+      "entry_point": "neg_nos",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp1xktqls3\\solution.py\", line 9, in <module>\n    assert neg_nos([-1,4,5,-6]) == [-1,-6]\n           ^^^^^^^\nNameError: name 'neg_nos' is not defined"
+    },
+    {
+      "id": "mbpp_443",
+      "entry_point": "largest_neg",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpwysx9s_m\\solution.py\", line 9, in <module>\n    assert largest_neg([1,2,3,-4,-6]) == -6\n           ^^^^^^^^^^^\nNameError: name 'largest_neg' is not defined"
+    },
+    {
+      "id": "mbpp_446",
+      "entry_point": "count_Occurrence",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp72oae7v2\\solution.py\", line 9, in <module>\n    assert count_Occurrence(('a', 'a', 'c', 'b', 'd'),['a', 'b'] ) == 3\n           ^^^^^^^^^^^^^^^^\nNameError: name 'count_Occurrence' is not defined"
+    },
+    {
+      "id": "mbpp_448",
+      "entry_point": "cal_sum",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp8_nuyou0\\solution.py\", line 9, in <module>\n    assert cal_sum(9) == 49\n           ^^^^^^^\nNameError: name 'cal_sum' is not defined"
+    },
+    {
+      "id": "mbpp_450",
+      "entry_point": "extract_string",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp57s83hss\\solution.py\", line 9, in <module>\n    assert extract_string(['Python', 'list', 'exercises', 'practice', 'solution'] ,8)==['practice', 'solution']\n           ^^^^^^^^^^^^^^\nNameError: name 'extract_string' is not defined"
+    },
+    {
+      "id": "mbpp_451",
+      "entry_point": "remove_whitespaces",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp3s54fd2y\\solution.py\", line 9, in <module>\n    assert remove_whitespaces(' Google    Flutter ') == 'GoogleFlutter'\n           ^^^^^^^^^^^^^^^^^^\nNameError: name 'remove_whitespaces' is not defined"
+    },
+    {
+      "id": "mbpp_453",
+      "entry_point": "sumofFactors",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp32k5ltw2\\solution.py\", line 9, in <module>\n    assert sumofFactors(18) == 26\n           ^^^^^^^^^^^^\nNameError: name 'sumofFactors' is not defined"
+    },
+    {
+      "id": "mbpp_455",
+      "entry_point": "check_monthnumb_number",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpe72rpozc\\solution.py\", line 9, in <module>\n    assert check_monthnumb_number(5)==True\n           ^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'check_monthnumb_number' is not defined"
+    },
+    {
+      "id": "mbpp_472",
+      "entry_point": "check_Consecutive",
+      "answer": "```python\ndef solution(*args, **kwargs):\n    pass\n```",
+      "extracted_code": "def solution(*args, **kwargs):\n    pass",
+      "passed": false,
+      "timed_out": false,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmph0j1i00f\\solution.py\", line 9, in <module>\n    assert check_Consecutive([1,2,3,4,5]) == True\n           ^^^^^^^^^^^^^^^^^\nNameError: name 'check_Consecutive' is not defined"
+    }
+  ],
+  "style_results": [
+    {
+      "id": "poem_01",
+      "kind": "poem",
+      "prompt": "Write an eight-line rhyming poem about a quiet harbor at dawn.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.98
+    },
+    {
+      "id": "poem_02",
+      "kind": "poem",
+      "prompt": "Write a twelve-line rhyming poem describing autumn leaves falling in a windy park.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.98
+    },
+    {
+      "id": "poem_03",
+      "kind": "poem",
+      "prompt": "Write a four-stanza rhyming poem about an old library full of ancient books.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.98
+    },
+    {
+      "id": "poem_04",
+      "kind": "poem",
+      "prompt": "Write an eight-line poem with an ABAB rhyme scheme about stargazing on a clear summer night.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.98
+    },
+    {
+      "id": "poem_05",
+      "kind": "poem",
+      "prompt": "Write a ten-line rhyming poem about a lighthouse guiding ships through a stormy sea.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.98
+    },
+    {
+      "id": "poem_06",
+      "kind": "poem",
+      "prompt": "Write an eight-line rhyming poem about the first snowfall of winter in a mountain village.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.98
+    },
+    {
+      "id": "story_01",
+      "kind": "story",
+      "prompt": "Write a short creative story (under 300 words) about a clockmaker who discovers a pocket watch that runs backward.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_02",
+      "kind": "story",
+      "prompt": "Write a narrative about an astronomer who detects an unexpected harmonic signal coming from Jupiter's moons.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_03",
+      "kind": "story",
+      "prompt": "Write a flash fiction piece about a gardener whose rare night-blooming flower grants a single quiet memory.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_04",
+      "kind": "story",
+      "prompt": "Write a brief mystery story about a missing antique key in a seaside bed-and-breakfast.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_05",
+      "kind": "story",
+      "prompt": "Write a short atmospheric story about two travelers seeking shelter from a sudden storm in a stone cottage.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_01",
+      "kind": "email",
+      "prompt": "Write a polite professional email requesting a deadline extension for a software project due to server migration delays.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_02",
+      "kind": "email",
+      "prompt": "Write a warm welcome email to a new team member joining as a Senior Data Scientist.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_03",
+      "kind": "email",
+      "prompt": "Write a persuasive email proposing a remote work policy trial for a design team.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_04",
+      "kind": "email",
+      "prompt": "Write a concise customer support email addressing a billing discrepancy with empathy and clear resolution steps.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_05",
+      "kind": "email",
+      "prompt": "Write a follow-up email after a successful project kickoff meeting with client stakeholders.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_01",
+      "kind": "explanation",
+      "prompt": "Explain how optical fiber cables transmit data across long distances using total internal reflection, aimed at a high school student.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_02",
+      "kind": "explanation",
+      "prompt": "Explain the concept of time complexity and Big O notation using an everyday library analogy.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_03",
+      "kind": "explanation",
+      "prompt": "Explain how electric vehicle regenerative braking works in simple, clear terms for non-engineers.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_04",
+      "kind": "explanation",
+      "prompt": "Explain the difference between compiler and interpreter code execution with concrete examples.",
+      "answer": "The night is serene and clear,\nThe quiet stars draw very near.\nA peaceful stillness in the air,\nWith gentle calm beyond compare.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 9.6,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.6
+      },
+      "rhyme_score": 0.0
+    }
+  ]
+}
