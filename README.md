@@ -18,7 +18,7 @@ Blend a **writing model** and a **coding model** with SLERP, drag a handle along
 
 >  · slider drag, same prompt, three different answers
 
-**[Live demo]()** · 
+**[Live Demo](https://nap-in-a-boat.vercel.app)** · **[Backend API](https://nap-in-a-boat.onrender.com)**
 </div>
 
 ---
@@ -203,8 +203,9 @@ python scripts/validate_repo.py   # schemas, no model files or secrets committed
 
 ## 🌊 Live demo
 
-> 🔗 **[  ]** ·  
-> 🎥 **[ https://drive.google.com/file/d/1-95cKjrOo-gf8OZ8Hss4ALBcQk4UxYk_/view?usp=sharing ]**
+> 🚀 **Frontend App:** [https://nap-in-a-boat.vercel.app](https://nap-in-a-boat.vercel.app)  
+> ⚙️ **Cloud Backend:** [https://nap-in-a-boat.onrender.com](https://nap-in-a-boat.onrender.com)  
+> 🎥 **Demo Video:** [Google Drive Recording](https://drive.google.com/file/d/1-95cKjrOo-gf8OZ8Hss4ALBcQk4UxYk_/view?usp=sharing)
 
 ---
 
