@@ -1,0 +1,23 @@
+# models and weights
+*.gguf
+*.safetensors
+*.bin
+merged/
+gguf/
+hf_cache/
+llama.cpp/
+
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# os / editors
+.DS_Store
+.vscode/
+.idea/

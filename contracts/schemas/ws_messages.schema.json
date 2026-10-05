@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WebSocket Messages",
+  "description": "Union schema covering all valid client→server and server→client message types (section 4.4).",
+  "oneOf": [
+    {
+      "title": "generate (client→server)",
+      "type": "object",
+      "required": ["type", "request_id", "blend_id", "prompt"],
+      "additionalProperties": false,
+      "properties": {
+        "type":        { "type": "string", "enum": ["generate"] },
+        "request_id":  { "type": "string" },
+        "blend_id":    { "type": "string" },
+        "prompt":      { "type": "string" },
+        "max_tokens":  { "type": "integer", "minimum": 1, "default": 256 },
+        "temperature": { "type": "number", "minimum": 0, "default": 0.7 }
+      }
+    },
+    {
+      "title": "cancel (client→server)",
+      "type": "object",
+      "required": ["type", "request_id"],
+      "additionalProperties": false,
+      "properties": {
+        "type":       { "type": "string", "enum": ["cancel"] },
+        "request_id": { "type": "string" }
+      }
+    },
+    {
+      "title": "find_best (client→server)",
+      "type": "object",
+      "required": ["type", "request_id", "tasks"],
+      "additionalProperties": false,
+      "properties": {
+        "type":       { "type": "string", "enum": ["find_best"] },
+        "request_id": { "type": "string" },
+        "tasks": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["kind", "prompt"],
+            "properties": {
+              "kind":        { "type": "string", "enum": ["code", "style"] },
+              "prompt":      { "type": "string" },
+              "entry_point": { "type": "string" },
+              "tests":       { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "pong (client→server)",
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": { "type": { "type": "string", "enum": ["pong"] } }
+    },
+    {
+      "title": "token (server→client)",
+      "type": "object",
+      "required": ["type", "request_id", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "type":       { "type": "string", "enum": ["token"] },
+        "request_id": { "type": "string" },
+        "text":       { "type": "string" }
+      }
+    },
+    {
+      "title": "done (server→client)",
+      "type": "object",
+      "required": ["type", "request_id", "blend_id", "tokens", "tokens_per_sec"],
+      "additionalProperties": false,
+      "properties": {
+        "type":           { "type": "string", "enum": ["done"] },
+        "request_id":     { "type": "string" },
+        "blend_id":       { "type": "string" },
+        "tokens":         { "type": "integer", "minimum": 0 },
+        "tokens_per_sec": { "type": "number", "minimum": 0 }
+      }
+    },
+    {
+      "title": "progress (server→client)",
+      "type": "object",
+      "required": ["type", "request_id", "step", "of", "blend_id"],
+      "additionalProperties": false,
+      "properties": {
+        "type":       { "type": "string", "enum": ["progress"] },
+        "request_id": { "type": "string" },
+        "step":       { "type": "integer", "minimum": 1 },
+        "of":         { "type": "integer", "minimum": 1 },
+        "blend_id":   { "type": "string" }
+      }
+    },
+    {
+      "title": "result (server→client)",
+      "type": "object",
+      "required": ["type", "request_id", "best_blend_id", "scores"],
+      "additionalProperties": false,
+      "properties": {
+        "type":          { "type": "string", "enum": ["result"] },
+        "request_id":    { "type": "string" },
+        "best_blend_id": { "type": "string" },
+        "scores": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    {
+      "title": "error (server→client)",
+      "type": "object",
+      "required": ["type", "request_id", "code", "message"],
+      "additionalProperties": false,
+      "properties": {
+        "type":       { "type": "string", "enum": ["error"] },
+        "request_id": { "type": "string" },
+        "code": {
+          "type": "string",
+          "enum": ["unknown_blend", "busy", "bad_request", "cancelled", "internal"]
+        },
+        "message": { "type": "string" }
+      }
+    },
+    {
+      "title": "ping (server→client)",
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": { "type": { "type": "string", "enum": ["ping"] } }
+    }
+  ]
+}

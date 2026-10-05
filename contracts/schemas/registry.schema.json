@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Model Registry",
+  "type": "object",
+  "required": ["pair", "blends"],
+  "additionalProperties": false,
+  "properties": {
+    "pair": {
+      "type": "object",
+      "required": ["model_a", "model_b"],
+      "additionalProperties": false,
+      "properties": {
+        "model_a": { "type": "string" },
+        "model_b": { "type": "string" }
+      }
+    },
+    "blends": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "t", "method", "variant", "label", "description", "gguf_key", "sha256", "quant", "size_bytes"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["sweep_000", "sweep_025", "sweep_050", "sweep_075", "sweep_100",
+                     "split_attn_code", "split_mlp_code", "gradient_mid"]
+          },
+          "t": { "type": "number", "minimum": 0, "maximum": 1 },
+          "method": { "type": "string", "enum": ["parent", "slerp"] },
+          "variant": {
+            "type": "string",
+            "enum": ["uniform", "split_attn_code", "split_mlp_code", "gradient_mid"]
+          },
+          "label": { "type": "string" },
+          "description": { "type": "string" },
+          "gguf_key": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]+$" },
+          "quant": { "type": "string" },
+          "size_bytes": { "type": "integer", "minimum": 1 }
+        }
+      }
+    }
+  }
+}

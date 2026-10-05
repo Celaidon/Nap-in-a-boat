@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evaluation Metrics",
+  "type": "object",
+  "required": ["generated_at", "judge_model", "n_code", "n_style", "blends"],
+  "additionalProperties": false,
+  "properties": {
+    "generated_at": { "type": "string", "format": "date-time" },
+    "judge_model": { "type": "string" },
+    "n_code": { "type": "integer", "minimum": 1 },
+    "n_style": { "type": "integer", "minimum": 1 },
+    "blends": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["blend_id", "code_pass", "style_score", "style_score_std", "rhyme_score", "tokens_per_sec"],
+        "additionalProperties": false,
+        "properties": {
+          "blend_id": {
+            "type": "string",
+            "enum": ["sweep_000", "sweep_025", "sweep_050", "sweep_075", "sweep_100",
+                     "split_attn_code", "split_mlp_code", "gradient_mid"]
+          },
+          "code_pass":       { "type": "number", "minimum": 0, "maximum": 1 },
+          "style_score":     { "type": "number", "minimum": 0, "maximum": 10 },
+          "style_score_std": { "type": "number", "minimum": 0 },
+          "rhyme_score":     { "type": "number", "minimum": 0, "maximum": 1 },
+          "tokens_per_sec":  { "type": "number", "minimum": 0 }
+        }
+      }
+    },
+    "reference": {
+      "type": "object",
+      "required": ["name", "code_pass", "style_score"],
+      "additionalProperties": false,
+      "properties": {
+        "name":        { "type": "string" },
+        "code_pass":   { "type": "number", "minimum": 0, "maximum": 1 },
+        "style_score": { "type": "number", "minimum": 0, "maximum": 10 }
+      }
+    }
+  }
+}

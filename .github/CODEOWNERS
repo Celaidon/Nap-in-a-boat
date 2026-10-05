@@ -1,0 +1,7 @@
+/contracts/                 @TEAMLEAD @MUSKAN @SHARVA
+/verification/              @TEAMLEAD @MUSKAN @SHARVA
+README.md                   @TEAMLEAD @MUSKAN @SHARVA
+
+/configs/   /src/merge/   /models/   /tests/merge/   /requirements/merge.txt    @TEAMLEAD
+/data/      /src/eval/    /results/  /tests/eval/    /requirements/eval.txt     @MUSKAN
+/src/server/ /docker/     /scripts/  /.github/  /tests/server/  /requirements/server.txt  @SHARVA

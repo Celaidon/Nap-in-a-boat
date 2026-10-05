@@ -1,0 +1,36 @@
+BlendLab — NOTICE
+=================
+
+## Our Code
+
+Copyright 2026 BlendLab Contributors. Licensed under the Apache License, Version 2.0.
+See the LICENSE file for the full text.
+
+## Model Weights
+
+This project uses the following models from Hugging Face under Google's Gemma Terms of Use:
+
+- google/gemma-1.1-7b-it  (https://huggingface.co/google/gemma-1.1-7b-it)
+- google/codegemma-7b-it  (https://huggingface.co/google/codegemma-7b-it)
+
+Gemma Terms of Use: https://ai.google.dev/gemma/terms
+
+Merged and quantized derivatives of these models are covered by the same terms.
+GGUF files are stored in a private bucket and are not publicly redistributed.
+Each person who downloads or uses these weights must independently accept the terms
+on the respective Hugging Face model pages.
+
+## Datasets
+
+- MBPP (sanitized) — used in the coding evaluation (Track B).
+  Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+  Source: https://huggingface.co/datasets/google-research-datasets/mbpp
+  Citation: Austin et al., "Program Synthesis with Large Language Models", 2021.
+
+- Style prompts — written by the BlendLab team; no third-party copyright.
+- Test poems — written by the BlendLab team; no third-party copyright.
+
+## Third-party Libraries
+
+Dependencies are listed in requirements/merge.txt, requirements/eval.txt, and
+requirements/server.txt. Each library is used under its own license.

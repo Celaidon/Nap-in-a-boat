@@ -1,0 +1,104 @@
+{
+  "pair": {
+    "model_a": "google/gemma-1.1-7b-it",
+    "model_b": "google/codegemma-7b-it"
+  },
+  "blends": [
+    {
+      "id": "sweep_000",
+      "t": 0.0,
+      "method": "parent",
+      "variant": "uniform",
+      "label": "100% writing (Model A)",
+      "description": "Model A itself — gemma-1.1-7b-it, no merging",
+      "gguf_key": "models/sweep_000-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    },
+    {
+      "id": "sweep_025",
+      "t": 0.25,
+      "method": "slerp",
+      "variant": "uniform",
+      "label": "25% blend",
+      "description": "SLERP at t=0.25 — closer to writing side",
+      "gguf_key": "models/sweep_025-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000001",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    },
+    {
+      "id": "sweep_050",
+      "t": 0.5,
+      "method": "slerp",
+      "variant": "uniform",
+      "label": "50% blend",
+      "description": "Plain SLERP halfway between A and B",
+      "gguf_key": "models/sweep_050-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000002",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    },
+    {
+      "id": "sweep_075",
+      "t": 0.75,
+      "method": "slerp",
+      "variant": "uniform",
+      "label": "75% blend",
+      "description": "SLERP at t=0.75 — closer to code side",
+      "gguf_key": "models/sweep_075-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000003",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    },
+    {
+      "id": "sweep_100",
+      "t": 1.0,
+      "method": "parent",
+      "variant": "uniform",
+      "label": "100% code (Model B)",
+      "description": "Model B itself — codegemma-7b-it, no merging",
+      "gguf_key": "models/sweep_100-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000004",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    },
+    {
+      "id": "split_attn_code",
+      "t": 0.5,
+      "method": "slerp",
+      "variant": "split_attn_code",
+      "label": "Attention → code, MLP → writing",
+      "description": "Attention layers 80% from B, MLP layers 80% from A",
+      "gguf_key": "models/split_attn_code-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000005",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    },
+    {
+      "id": "split_mlp_code",
+      "t": 0.5,
+      "method": "slerp",
+      "variant": "split_mlp_code",
+      "label": "MLP → code, Attention → writing",
+      "description": "MLP layers 80% from B, Attention layers 80% from A",
+      "gguf_key": "models/split_mlp_code-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000006",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    },
+    {
+      "id": "gradient_mid",
+      "t": 0.5,
+      "method": "slerp",
+      "variant": "gradient_mid",
+      "label": "Gradient (B peaks in middle)",
+      "description": "t varies with depth [0, 0.5, 1, 0.5, 0] — B's influence peaks in the middle layers",
+      "gguf_key": "models/gradient_mid-Q4_K_M.gguf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000007",
+      "quant": "Q4_K_M",
+      "size_bytes": 5200000000
+    }
+  ]
+}
