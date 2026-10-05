@@ -6,7 +6,7 @@ import jsonschema
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from src.server.generate import fake_stream
+from src.server.generate import DevModelStreamer, fake_stream
 from src.server.settings import ROOT, Settings
 from src.server.ws import router as ws_router
 
@@ -37,8 +37,12 @@ def load_checked(path, schema_name: str, label: str) -> dict:
     return data
 
 
-def create_app(settings: Settings | None = None) -> FastAPI:
+def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
+    """`stream` replaces the token source (tests inject one); otherwise it follows the settings."""
     settings = settings or Settings()
+    if stream is None:
+        # Until the ModelManager lands (C4), only DEV_MODEL_OVERRIDE gives real tokens.
+        stream = DevModelStreamer(settings.dev_model_override) if settings.dev_model_override else fake_stream
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
@@ -53,7 +57,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app = FastAPI(title="BlendLab", lifespan=lifespan)
     app.state.settings = settings
-    app.state.stream = fake_stream  # swapped for the real model streamer in C3
+    app.state.stream = stream
     app.include_router(ws_router)
 
     @app.get("/health")
