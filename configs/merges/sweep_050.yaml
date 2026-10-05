@@ -1,0 +1,14 @@
+# configs/merges/sweep_050.yaml
+# A2: First test merge (t = 0.5)
+
+slices:
+  - sources:
+      - model: google/gemma-1.1-7b-it
+        layer_range: [0, 28]
+      - model: google/codegemma-1.1-7b-it
+        layer_range: [0, 28]
+merge_method: slerp
+base_model: google/gemma-1.1-7b-it
+parameters:
+  t: 0.5
+dtype: bfloat16

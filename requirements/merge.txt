@@ -1,0 +1,13 @@
+# requirements/merge.txt
+# Track A: Models & Merging dependencies
+# Python 3.11. Pin all versions for reproducibility.
+
+mergekit==0.0.5.1
+transformers==4.44.2
+safetensors==0.4.5
+huggingface-hub==0.24.7
+boto3==1.35.30
+torch==2.4.1          # CPU-only is fine for merging; remove +cu118 suffix if no GPU
+pytest==8.3.3
+ruff==0.6.9
+python-dotenv==1.0.1
