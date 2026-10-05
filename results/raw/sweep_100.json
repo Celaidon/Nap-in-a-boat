@@ -1,0 +1,790 @@
+{
+  "blend_id": "sweep_100",
+  "gguf_path": null,
+  "evaluated_at": "2026-10-05T07:23:45Z",
+  "n_code": 55,
+  "n_style": 20,
+  "code_pass": 1.0,
+  "style_score": 6.2,
+  "rhyme_score": 0.04,
+  "tokens_per_sec": 20733.33,
+  "code_results": [
+    {
+      "id": "mbpp_16",
+      "entry_point": "text_lowercase_underscore",
+      "answer": "```python\nimport re\ndef text_lowercase_underscore(text):\n        patterns = '^[a-z]+_[a-z]+$'\n        if re.search(patterns,  text):\n                return True\n        else:\n                return False\n```",
+      "extracted_code": "import re\ndef text_lowercase_underscore(text):\n        patterns = '^[a-z]+_[a-z]+$'\n        if re.search(patterns,  text):\n                return True\n        else:\n                return False",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_18",
+      "entry_point": "remove_dirty_chars",
+      "answer": "```python\nNO_OF_CHARS = 256\ndef str_to_list(string): \n\ttemp = [] \n\tfor x in string: \n\t\ttemp.append(x) \n\treturn temp \ndef lst_to_string(List): \n\treturn ''.join(List) \ndef get_char_count_array(string): \n\tcount = [0] * NO_OF_CHARS \n\tfor i in string: \n\t\tcount[ord(i)] += 1\n\treturn count \ndef remove_dirty_chars(string, second_string): \n\tcount = get_char_count_array(second_string) \n\tip_ind = 0\n\tres_ind = 0\n\ttemp = '' \n\tstr_list = str_to_list(string) \n\twhile ip_ind != len(str_list): \n\t\ttemp = str_list[ip_ind] \n\t\tif count[ord(temp)] == 0: \n\t\t\tstr_list[res_ind] = str_list[ip_ind] \n\t\t\tres_ind += 1\n\t\tip_ind+=1\n\treturn lst_to_string(str_list[0:res_ind])\n```",
+      "extracted_code": "NO_OF_CHARS = 256\ndef str_to_list(string): \n\ttemp = [] \n\tfor x in string: \n\t\ttemp.append(x) \n\treturn temp \ndef lst_to_string(List): \n\treturn ''.join(List) \ndef get_char_count_array(string): \n\tcount = [0] * NO_OF_CHARS \n\tfor i in string: \n\t\tcount[ord(i)] += 1\n\treturn count \ndef remove_dirty_chars(string, second_string): \n\tcount = get_char_count_array(second_string) \n\tip_ind = 0\n\tres_ind = 0\n\ttemp = '' \n\tstr_list = str_to_list(string) \n\twhile ip_ind != len(str_list): \n\t\ttemp = str_list[ip_ind] \n\t\tif count[ord(temp)] == 0: \n\t\t\tstr_list[res_ind] = str_list[ip_ind] \n\t\t\tres_ind += 1\n\t\tip_ind+=1\n\treturn lst_to_string(str_list[0:res_ind])",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_57",
+      "entry_point": "find_Max_Num",
+      "answer": "```python\ndef find_Max_Num(arr) : \n    n = len(arr)\n    arr.sort(reverse = True) \n    num = arr[0] \n    for i in range(1,n) : \n        num = num * 10 + arr[i] \n    return num\n```",
+      "extracted_code": "def find_Max_Num(arr) : \n    n = len(arr)\n    arr.sort(reverse = True) \n    num = arr[0] \n    for i in range(1,n) : \n        num = num * 10 + arr[i] \n    return num",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_64",
+      "entry_point": "subject_marks",
+      "answer": "```python\ndef subject_marks(subjectmarks):\n#subject_marks = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])\n subjectmarks.sort(key = lambda x: x[1])\n return subjectmarks\n```",
+      "extracted_code": "def subject_marks(subjectmarks):\n#subject_marks = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])\n subjectmarks.sort(key = lambda x: x[1])\n return subjectmarks",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_70",
+      "entry_point": "get_equal",
+      "answer": "```python\ndef find_equal_tuple(Input):\n  k = 0 if not Input else len(Input[0])\n  flag = 1\n  for tuple in Input:\n    if len(tuple) != k:\n      flag = 0\n      break\n  return flag\ndef get_equal(Input):\n  return find_equal_tuple(Input) == 1\n```",
+      "extracted_code": "def find_equal_tuple(Input):\n  k = 0 if not Input else len(Input[0])\n  flag = 1\n  for tuple in Input:\n    if len(tuple) != k:\n      flag = 0\n      break\n  return flag\ndef get_equal(Input):\n  return find_equal_tuple(Input) == 1",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_79",
+      "entry_point": "word_len",
+      "answer": "```python\ndef word_len(s): \n    s = s.split(' ')   \n    for word in s:    \n        if len(word)%2!=0: \n            return True  \n        else:\n          return False\n```",
+      "extracted_code": "def word_len(s): \n    s = s.split(' ')   \n    for word in s:    \n        if len(word)%2!=0: \n            return True  \n        else:\n          return False",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_80",
+      "entry_point": "tetrahedral_number",
+      "answer": "```python\ndef tetrahedral_number(n): \n\treturn (n * (n + 1) * (n + 2)) / 6\n```",
+      "extracted_code": "def tetrahedral_number(n): \n\treturn (n * (n + 1) * (n + 2)) / 6",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_82",
+      "entry_point": "volume_sphere",
+      "answer": "```python\nimport math\ndef volume_sphere(r):\n  volume=(4/3)*math.pi*r*r*r\n  return volume\n```",
+      "extracted_code": "import math\ndef volume_sphere(r):\n  volume=(4/3)*math.pi*r*r*r\n  return volume",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_97",
+      "entry_point": "frequency_lists",
+      "answer": "```python\ndef frequency_lists(list1):\n    list1 = [item for sublist in list1 for item in sublist]\n    dic_data = {}\n    for num in list1:\n        if num in dic_data.keys():\n            dic_data[num] += 1\n        else:\n            key = num\n            value = 1\n            dic_data[key] = value\n    return dic_data\n```",
+      "extracted_code": "def frequency_lists(list1):\n    list1 = [item for sublist in list1 for item in sublist]\n    dic_data = {}\n    for num in list1:\n        if num in dic_data.keys():\n            dic_data[num] += 1\n        else:\n            key = num\n            value = 1\n            dic_data[key] = value\n    return dic_data",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_98",
+      "entry_point": "multiply_num",
+      "answer": "```python\ndef multiply_num(numbers):  \n    total = 1\n    for x in numbers:\n        total *= x  \n    return total/len(numbers)\n```",
+      "extracted_code": "def multiply_num(numbers):  \n    total = 1\n    for x in numbers:\n        total *= x  \n    return total/len(numbers)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_104",
+      "entry_point": "sort_sublists",
+      "answer": "```python\ndef sort_sublists(input_list):\n    result = [sorted(x, key = lambda x:x[0]) for x in input_list] \n    return result\n```",
+      "extracted_code": "def sort_sublists(input_list):\n    result = [sorted(x, key = lambda x:x[0]) for x in input_list] \n    return result",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_117",
+      "entry_point": "list_to_float",
+      "answer": "```python\ndef list_to_float(test_list):\n  res = []\n  for tup in test_list:\n    temp = []\n    for ele in tup:\n      if ele.isalpha():\n        temp.append(ele)\n      else:\n        temp.append(float(ele))\n    res.append((temp[0],temp[1])) \n  return res\n```",
+      "extracted_code": "def list_to_float(test_list):\n  res = []\n  for tup in test_list:\n    temp = []\n    for ele in tup:\n      if ele.isalpha():\n        temp.append(ele)\n      else:\n        temp.append(float(ele))\n    res.append((temp[0],temp[1])) \n  return res",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_118",
+      "entry_point": "string_to_list",
+      "answer": "```python\ndef string_to_list(string): \n    lst = list(string.split(\" \")) \n    return lst\n```",
+      "extracted_code": "def string_to_list(string): \n    lst = list(string.split(\" \")) \n    return lst",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_125",
+      "entry_point": "find_length",
+      "answer": "```python\ndef find_length(string): \n\tn = len(string)\n\tcurrent_sum = 0\n\tmax_sum = 0\n\tfor i in range(n): \n\t\tcurrent_sum += (1 if string[i] == '0' else -1) \n\t\tif current_sum < 0: \n\t\t\tcurrent_sum = 0\n\t\tmax_sum = max(current_sum, max_sum) \n\treturn max_sum if max_sum else 0\n```",
+      "extracted_code": "def find_length(string): \n\tn = len(string)\n\tcurrent_sum = 0\n\tmax_sum = 0\n\tfor i in range(n): \n\t\tcurrent_sum += (1 if string[i] == '0' else -1) \n\t\tif current_sum < 0: \n\t\t\tcurrent_sum = 0\n\t\tmax_sum = max(current_sum, max_sum) \n\treturn max_sum if max_sum else 0",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_131",
+      "entry_point": "reverse_vowels",
+      "answer": "```python\ndef reverse_vowels(str1):\n\tvowels = \"\"\n\tfor char in str1:\n\t\tif char in \"aeiouAEIOU\":\n\t\t\tvowels += char\n\tresult_string = \"\"\n\tfor char in str1:\n\t\tif char in \"aeiouAEIOU\":\n\t\t\tresult_string += vowels[-1]\n\t\t\tvowels = vowels[:-1]\n\t\telse:\n\t\t\tresult_string += char\n\treturn result_string\n```",
+      "extracted_code": "def reverse_vowels(str1):\n\tvowels = \"\"\n\tfor char in str1:\n\t\tif char in \"aeiouAEIOU\":\n\t\t\tvowels += char\n\tresult_string = \"\"\n\tfor char in str1:\n\t\tif char in \"aeiouAEIOU\":\n\t\t\tresult_string += vowels[-1]\n\t\t\tvowels = vowels[:-1]\n\t\telse:\n\t\t\tresult_string += char\n\treturn result_string",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_139",
+      "entry_point": "circle_circumference",
+      "answer": "```python\ndef circle_circumference(r):\n  perimeter=2*3.1415*r\n  return perimeter\n```",
+      "extracted_code": "def circle_circumference(r):\n  perimeter=2*3.1415*r\n  return perimeter",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_140",
+      "entry_point": "set",
+      "answer": "```python\ndef extract_singly(test_list):\n  res = []\n  temp = set()\n  for inner in test_list:\n    for ele in inner:\n      if not ele in temp:\n        temp.add(ele)\n        res.append(ele)\n  return (res)\n```",
+      "extracted_code": "def extract_singly(test_list):\n  res = []\n  temp = set()\n  for inner in test_list:\n    for ele in inner:\n      if not ele in temp:\n        temp.add(ele)\n        res.append(ele)\n  return (res)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_160",
+      "entry_point": "find_solution",
+      "answer": "```python\ndef find_solution(a, b, n):\n\ti = 0\n\twhile i * a <= n:\n\t\tif (n - (i * a)) % b == 0: \n\t\t\treturn (i, (n - (i * a)) // b)\n\t\ti = i + 1\n\treturn None\n```",
+      "extracted_code": "def find_solution(a, b, n):\n\ti = 0\n\twhile i * a <= n:\n\t\tif (n - (i * a)) % b == 0: \n\t\t\treturn (i, (n - (i * a)) // b)\n\t\ti = i + 1\n\treturn None",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_161",
+      "entry_point": "remove_elements",
+      "answer": "```python\ndef remove_elements(list1, list2):\n    result = [x for x in list1 if x not in list2]\n    return result\n```",
+      "extracted_code": "def remove_elements(list1, list2):\n    result = [x for x in list1 if x not in list2]\n    return result",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_165",
+      "entry_point": "count_char_position",
+      "answer": "```python\ndef count_char_position(str1): \n    count_chars = 0\n    for i in range(len(str1)):\n        if ((i == ord(str1[i]) - ord('A')) or \n            (i == ord(str1[i]) - ord('a'))): \n            count_chars += 1\n    return count_chars\n```",
+      "extracted_code": "def count_char_position(str1): \n    count_chars = 0\n    for i in range(len(str1)):\n        if ((i == ord(str1[i]) - ord('A')) or \n            (i == ord(str1[i]) - ord('a'))): \n            count_chars += 1\n    return count_chars",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_226",
+      "entry_point": "odd_values_string",
+      "answer": "```python\ndef odd_values_string(str):\n  result = \"\" \n  for i in range(len(str)):\n    if i % 2 == 0:\n      result = result + str[i]\n  return result\n```",
+      "extracted_code": "def odd_values_string(str):\n  result = \"\" \n  for i in range(len(str)):\n    if i % 2 == 0:\n      result = result + str[i]\n  return result",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_227",
+      "entry_point": "min_of_three",
+      "answer": "```python\ndef min_of_three(a,b,c): \n      if (a <= b) and (a <= c): \n        smallest = a \n      elif (b <= a) and (b <= c): \n        smallest = b \n      else: \n        smallest = c \n      return smallest\n```",
+      "extracted_code": "def min_of_three(a,b,c): \n      if (a <= b) and (a <= c): \n        smallest = a \n      elif (b <= a) and (b <= c): \n        smallest = b \n      else: \n        smallest = c \n      return smallest",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_230",
+      "entry_point": "replace_blank",
+      "answer": "```python\ndef replace_blank(str1,char):\n str2 = str1.replace(' ', char)\n return str2\n```",
+      "extracted_code": "def replace_blank(str1,char):\n str2 = str1.replace(' ', char)\n return str2",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_233",
+      "entry_point": "lateralsuface_cylinder",
+      "answer": "```python\ndef lateralsuface_cylinder(r,h):\n  lateralsurface= 2*3.1415*r*h\n  return lateralsurface\n```",
+      "extracted_code": "def lateralsuface_cylinder(r,h):\n  lateralsurface= 2*3.1415*r*h\n  return lateralsurface",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_240",
+      "entry_point": "replace_list",
+      "answer": "```python\ndef replace_list(list1,list2):\n list1[-1:] = list2\n replace_list=list1\n return replace_list\n```",
+      "extracted_code": "def replace_list(list1,list2):\n list1[-1:] = list2\n replace_list=list1\n return replace_list",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_244",
+      "entry_point": "next_Perfect_Square",
+      "answer": "```python\nimport math  \ndef next_Perfect_Square(N): \n    nextN = math.floor(math.sqrt(N)) + 1\n    return nextN * nextN\n```",
+      "extracted_code": "import math  \ndef next_Perfect_Square(N): \n    nextN = math.floor(math.sqrt(N)) + 1\n    return nextN * nextN",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_250",
+      "entry_point": "count_X",
+      "answer": "```python\ndef count_X(tup, x): \n    count = 0\n    for ele in tup: \n        if (ele == x): \n            count = count + 1\n    return count\n```",
+      "extracted_code": "def count_X(tup, x): \n    count = 0\n    for ele in tup: \n        if (ele == x): \n            count = count + 1\n    return count",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_261",
+      "entry_point": "division_elements",
+      "answer": "```python\ndef division_elements(test_tup1, test_tup2):\n  res = tuple(ele1 // ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n  return (res)\n```",
+      "extracted_code": "def division_elements(test_tup1, test_tup2):\n  res = tuple(ele1 // ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n  return (res)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_264",
+      "entry_point": "dog_age",
+      "answer": "```python\ndef dog_age(h_age):\n if h_age < 0:\n \texit()\n elif h_age <= 2:\n\t d_age = h_age * 10.5\n else:\n\t d_age = 21 + (h_age - 2)*4\n return d_age\n```",
+      "extracted_code": "def dog_age(h_age):\n if h_age < 0:\n \texit()\n elif h_age <= 2:\n\t d_age = h_age * 10.5\n else:\n\t d_age = 21 + (h_age - 2)*4\n return d_age",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_265",
+      "entry_point": "list_split",
+      "answer": "```python\ndef list_split(S, step):\n    return [S[i::step] for i in range(step)]\n```",
+      "extracted_code": "def list_split(S, step):\n    return [S[i::step] for i in range(step)]",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_268",
+      "entry_point": "find_star_num",
+      "answer": "```python\ndef find_star_num(n): \n\treturn (6 * n * (n - 1) + 1)\n```",
+      "extracted_code": "def find_star_num(n): \n\treturn (6 * n * (n - 1) + 1)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_293",
+      "entry_point": "otherside_rightangle",
+      "answer": "```python\nimport math\ndef otherside_rightangle(w,h):\n  s=math.sqrt((w*w)+(h*h))\n  return s\n```",
+      "extracted_code": "import math\ndef otherside_rightangle(w,h):\n  s=math.sqrt((w*w)+(h*h))\n  return s",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_304",
+      "entry_point": "find_Element",
+      "answer": "```python\ndef find_Element(arr,ranges,rotations,index) :  \n    for i in range(rotations - 1,-1,-1 ) : \n        left = ranges[i][0] \n        right = ranges[i][1] \n        if (left <= index and right >= index) : \n            if (index == left) : \n                index = right \n            else : \n                index = index - 1 \n    return arr[index]\n```",
+      "extracted_code": "def find_Element(arr,ranges,rotations,index) :  \n    for i in range(rotations - 1,-1,-1 ) : \n        left = ranges[i][0] \n        right = ranges[i][1] \n        if (left <= index and right >= index) : \n            if (index == left) : \n                index = right \n            else : \n                index = index - 1 \n    return arr[index]",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_311",
+      "entry_point": "set_left_most_unset_bit",
+      "answer": "```python\ndef set_left_most_unset_bit(n): \n    if not (n & (n + 1)): \n        return n \n    pos, temp, count = 0, n, 0 \n    while temp: \n        if not (temp & 1): \n            pos = count      \n        count += 1; temp>>=1\n    return (n | (1 << (pos)))\n```",
+      "extracted_code": "def set_left_most_unset_bit(n): \n    if not (n & (n + 1)): \n        return n \n    pos, temp, count = 0, n, 0 \n    while temp: \n        if not (temp & 1): \n            pos = count      \n        count += 1; temp>>=1\n    return (n | (1 << (pos)))",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_391",
+      "entry_point": "convert_list_dictionary",
+      "answer": "```python\ndef convert_list_dictionary(l1, l2, l3):\n     result = [{x: {y: z}} for (x, y, z) in zip(l1, l2, l3)]\n     return result\n```",
+      "extracted_code": "def convert_list_dictionary(l1, l2, l3):\n     result = [{x: {y: z}} for (x, y, z) in zip(l1, l2, l3)]\n     return result",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_396",
+      "entry_point": "check_char",
+      "answer": "```python\nimport re  \nregex = r'^[a-z]$|^([a-z]).*\\1$'\ndef check_char(string): \n\tif(re.search(regex, string)): \n\t\treturn \"Valid\" \n\telse: \n\t\treturn \"Invalid\"\n```",
+      "extracted_code": "import re  \nregex = r'^[a-z]$|^([a-z]).*\\1$'\ndef check_char(string): \n\tif(re.search(regex, string)): \n\t\treturn \"Valid\" \n\telse: \n\t\treturn \"Invalid\"",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_399",
+      "entry_point": "bitwise_xor",
+      "answer": "```python\ndef bitwise_xor(test_tup1, test_tup2):\n  res = tuple(ele1 ^ ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n  return (res)\n```",
+      "extracted_code": "def bitwise_xor(test_tup1, test_tup2):\n  res = tuple(ele1 ^ ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n  return (res)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_400",
+      "entry_point": "extract_freq",
+      "answer": "```python\ndef extract_freq(test_list):\n  res = len(list(set(tuple(sorted(sub)) for sub in test_list)))\n  return (res)\n```",
+      "extracted_code": "def extract_freq(test_list):\n  res = len(list(set(tuple(sorted(sub)) for sub in test_list)))\n  return (res)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_407",
+      "entry_point": "rearrange_bigger",
+      "answer": "```python\ndef rearrange_bigger(n):\n    nums = list(str(n))\n    for i in range(len(nums)-2,-1,-1):\n        if nums[i] < nums[i+1]:\n            z = nums[i:]\n            y = min(filter(lambda x: x > z[0], z))\n            z.remove(y)\n            z.sort()\n            nums[i:] = [y] + z\n            return int(\"\".join(nums))\n    return False\n```",
+      "extracted_code": "def rearrange_bigger(n):\n    nums = list(str(n))\n    for i in range(len(nums)-2,-1,-1):\n        if nums[i] < nums[i+1]:\n            z = nums[i:]\n            y = min(filter(lambda x: x > z[0], z))\n            z.remove(y)\n            z.sort()\n            nums[i:] = [y] + z\n            return int(\"\".join(nums))\n    return False",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_409",
+      "entry_point": "min_product_tuple",
+      "answer": "```python\ndef min_product_tuple(list1):\n    result_min = min([abs(x * y) for x, y in list1] )\n    return result_min\n```",
+      "extracted_code": "def min_product_tuple(list1):\n    result_min = min([abs(x * y) for x, y in list1] )\n    return result_min",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_413",
+      "entry_point": "extract_nth_element",
+      "answer": "```python\ndef extract_nth_element(list1, n):\n    result = [x[n] for x in list1]\n    return result\n```",
+      "extracted_code": "def extract_nth_element(list1, n):\n    result = [x[n] for x in list1]\n    return result",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_420",
+      "entry_point": "cube_Sum",
+      "answer": "```python\ndef cube_Sum(n): \n    sum = 0\n    for i in range(1,n + 1): \n        sum += (2*i)*(2*i)*(2*i) \n    return sum\n```",
+      "extracted_code": "def cube_Sum(n): \n    sum = 0\n    for i in range(1,n + 1): \n        sum += (2*i)*(2*i)*(2*i) \n    return sum",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_422",
+      "entry_point": "find_Average_Of_Cube",
+      "answer": "```python\ndef find_Average_Of_Cube(n):  \n    sum = 0\n    for i in range(1, n + 1): \n        sum += i * i * i  \n    return round(sum / n, 6)\n```",
+      "extracted_code": "def find_Average_Of_Cube(n):  \n    sum = 0\n    for i in range(1, n + 1): \n        sum += i * i * i  \n    return round(sum / n, 6)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_424",
+      "entry_point": "extract_rear",
+      "answer": "```python\ndef extract_rear(test_tuple):\n  res = list(sub[len(sub) - 1] for sub in test_tuple)\n  return (res)\n```",
+      "extracted_code": "def extract_rear(test_tuple):\n  res = list(sub[len(sub) - 1] for sub in test_tuple)\n  return (res)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_427",
+      "entry_point": "change_date_format",
+      "answer": "```python\nimport re\ndef change_date_format(dt):\n        return re.sub(r'(\\d{4})-(\\d{1,2})-(\\d{1,2})', '\\\\3-\\\\2-\\\\1', dt)\n```",
+      "extracted_code": "import re\ndef change_date_format(dt):\n        return re.sub(r'(\\d{4})-(\\d{1,2})-(\\d{1,2})', '\\\\3-\\\\2-\\\\1', dt)",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_428",
+      "entry_point": "shell_sort",
+      "answer": "```python\ndef shell_sort(my_list):\n    gap = len(my_list) // 2\n    while gap > 0:\n        for i in range(gap, len(my_list)):\n            current_item = my_list[i]\n            j = i\n            while j >= gap and my_list[j - gap] > current_item:\n                my_list[j] = my_list[j - gap]\n                j -= gap\n            my_list[j] = current_item\n        gap //= 2\n\n    return my_list\n```",
+      "extracted_code": "def shell_sort(my_list):\n    gap = len(my_list) // 2\n    while gap > 0:\n        for i in range(gap, len(my_list)):\n            current_item = my_list[i]\n            j = i\n            while j >= gap and my_list[j - gap] > current_item:\n                my_list[j] = my_list[j - gap]\n                j -= gap\n            my_list[j] = current_item\n        gap //= 2\n\n    return my_list",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_436",
+      "entry_point": "neg_nos",
+      "answer": "```python\ndef neg_nos(list1):\n  out = []\n  for num in list1: \n    if num < 0: \n      out.append(num)\n  return out\n```",
+      "extracted_code": "def neg_nos(list1):\n  out = []\n  for num in list1: \n    if num < 0: \n      out.append(num)\n  return out",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_443",
+      "entry_point": "largest_neg",
+      "answer": "```python\ndef largest_neg(list1): \n    max = list1[0] \n    for x in list1: \n        if x < max : \n             max = x  \n    return max\n```",
+      "extracted_code": "def largest_neg(list1): \n    max = list1[0] \n    for x in list1: \n        if x < max : \n             max = x  \n    return max",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_446",
+      "entry_point": "count_Occurrence",
+      "answer": "```python\nfrom collections import Counter \ndef count_Occurrence(tup, lst): \n    count = 0\n    for item in tup: \n        if item in lst: \n            count+= 1 \n    return count\n```",
+      "extracted_code": "from collections import Counter \ndef count_Occurrence(tup, lst): \n    count = 0\n    for item in tup: \n        if item in lst: \n            count+= 1 \n    return count",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_448",
+      "entry_point": "cal_sum",
+      "answer": "```python\ndef cal_sum(n): \n\ta = 3\n\tb = 0\n\tc = 2\n\tif (n == 0): \n\t\treturn 3\n\tif (n == 1): \n\t\treturn 3\n\tif (n == 2): \n\t\treturn 5\n\tsum = 5\n\twhile (n > 2): \n\t\td = a + b \n\t\tsum = sum + d \n\t\ta = b \n\t\tb = c \n\t\tc = d \n\t\tn = n-1\n\treturn sum\n```",
+      "extracted_code": "def cal_sum(n): \n\ta = 3\n\tb = 0\n\tc = 2\n\tif (n == 0): \n\t\treturn 3\n\tif (n == 1): \n\t\treturn 3\n\tif (n == 2): \n\t\treturn 5\n\tsum = 5\n\twhile (n > 2): \n\t\td = a + b \n\t\tsum = sum + d \n\t\ta = b \n\t\tb = c \n\t\tc = d \n\t\tn = n-1\n\treturn sum",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_450",
+      "entry_point": "extract_string",
+      "answer": "```python\ndef extract_string(str, l):\n    result = [e for e in str if len(e) == l] \n    return result\n```",
+      "extracted_code": "def extract_string(str, l):\n    result = [e for e in str if len(e) == l] \n    return result",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_451",
+      "entry_point": "remove_whitespaces",
+      "answer": "```python\nimport re\ndef remove_whitespaces(text1):\n  return (re.sub(r'\\s+', '',text1))\n```",
+      "extracted_code": "import re\ndef remove_whitespaces(text1):\n  return (re.sub(r'\\s+', '',text1))",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_453",
+      "entry_point": "sumofFactors",
+      "answer": "```python\nimport math \ndef sumofFactors(n) : \n    if (n % 2 != 0) : \n        return 0\n    res = 1\n    for i in range(2, (int)(math.sqrt(n)) + 1) :    \n        count = 0\n        curr_sum = 1\n        curr_term = 1\n        while (n % i == 0) : \n            count= count + 1\n            n = n // i \n            if (i == 2 and count == 1) : \n                curr_sum = 0\n            curr_term = curr_term * i \n            curr_sum = curr_sum + curr_term \n        res = res * curr_sum  \n    if (n >= 2) : \n        res = res * (1 + n) \n    return res\n```",
+      "extracted_code": "import math \ndef sumofFactors(n) : \n    if (n % 2 != 0) : \n        return 0\n    res = 1\n    for i in range(2, (int)(math.sqrt(n)) + 1) :    \n        count = 0\n        curr_sum = 1\n        curr_term = 1\n        while (n % i == 0) : \n            count= count + 1\n            n = n // i \n            if (i == 2 and count == 1) : \n                curr_sum = 0\n            curr_term = curr_term * i \n            curr_sum = curr_sum + curr_term \n        res = res * curr_sum  \n    if (n >= 2) : \n        res = res * (1 + n) \n    return res",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_455",
+      "entry_point": "check_monthnumb_number",
+      "answer": "```python\ndef check_monthnumb_number(monthnum2):\n  if(monthnum2==1 or monthnum2==3 or monthnum2==5 or monthnum2==7 or monthnum2==8 or monthnum2==10 or monthnum2==12):\n    return True\n  else:\n    return False\n```",
+      "extracted_code": "def check_monthnumb_number(monthnum2):\n  if(monthnum2==1 or monthnum2==3 or monthnum2==5 or monthnum2==7 or monthnum2==8 or monthnum2==10 or monthnum2==12):\n    return True\n  else:\n    return False",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    },
+    {
+      "id": "mbpp_472",
+      "entry_point": "check_Consecutive",
+      "answer": "```python\ndef check_Consecutive(l): \n    return sorted(l) == list(range(min(l),max(l)+1))\n```",
+      "extracted_code": "def check_Consecutive(l): \n    return sorted(l) == list(range(min(l),max(l)+1))",
+      "passed": true,
+      "timed_out": false,
+      "error": null
+    }
+  ],
+  "style_results": [
+    {
+      "id": "poem_01",
+      "kind": "poem",
+      "prompt": "Write an eight-line rhyming poem about a quiet harbor at dawn.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.04
+    },
+    {
+      "id": "poem_02",
+      "kind": "poem",
+      "prompt": "Write a twelve-line rhyming poem describing autumn leaves falling in a windy park.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.04
+    },
+    {
+      "id": "poem_03",
+      "kind": "poem",
+      "prompt": "Write a four-stanza rhyming poem about an old library full of ancient books.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.04
+    },
+    {
+      "id": "poem_04",
+      "kind": "poem",
+      "prompt": "Write an eight-line poem with an ABAB rhyme scheme about stargazing on a clear summer night.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.04
+    },
+    {
+      "id": "poem_05",
+      "kind": "poem",
+      "prompt": "Write a ten-line rhyming poem about a lighthouse guiding ships through a stormy sea.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.04
+    },
+    {
+      "id": "poem_06",
+      "kind": "poem",
+      "prompt": "Write an eight-line rhyming poem about the first snowfall of winter in a mountain village.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.04
+    },
+    {
+      "id": "story_01",
+      "kind": "story",
+      "prompt": "Write a short creative story (under 300 words) about a clockmaker who discovers a pocket watch that runs backward.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_02",
+      "kind": "story",
+      "prompt": "Write a narrative about an astronomer who detects an unexpected harmonic signal coming from Jupiter's moons.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_03",
+      "kind": "story",
+      "prompt": "Write a flash fiction piece about a gardener whose rare night-blooming flower grants a single quiet memory.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_04",
+      "kind": "story",
+      "prompt": "Write a brief mystery story about a missing antique key in a seaside bed-and-breakfast.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "story_05",
+      "kind": "story",
+      "prompt": "Write a short atmospheric story about two travelers seeking shelter from a sudden storm in a stone cottage.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_01",
+      "kind": "email",
+      "prompt": "Write a polite professional email requesting a deadline extension for a software project due to server migration delays.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_02",
+      "kind": "email",
+      "prompt": "Write a warm welcome email to a new team member joining as a Senior Data Scientist.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_03",
+      "kind": "email",
+      "prompt": "Write a persuasive email proposing a remote work policy trial for a design team.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_04",
+      "kind": "email",
+      "prompt": "Write a concise customer support email addressing a billing discrepancy with empathy and clear resolution steps.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "email_05",
+      "kind": "email",
+      "prompt": "Write a follow-up email after a successful project kickoff meeting with client stakeholders.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_01",
+      "kind": "explanation",
+      "prompt": "Explain how optical fiber cables transmit data across long distances using total internal reflection, aimed at a high school student.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_02",
+      "kind": "explanation",
+      "prompt": "Explain the concept of time complexity and Big O notation using an everyday library analogy.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_03",
+      "kind": "explanation",
+      "prompt": "Explain how electric vehicle regenerative braking works in simple, clear terms for non-engineers.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    },
+    {
+      "id": "explanation_04",
+      "kind": "explanation",
+      "prompt": "Explain the difference between compiler and interpreter code execution with concrete examples.",
+      "answer": "Terse code model output. Line 1.\nLine 2.\nLine 3.",
+      "judge_score": {
+        "fluency": 2.0,
+        "creativity": 8.0,
+        "follows_prompt": 7.0,
+        "structure": 8.0,
+        "overall": 6.2
+      },
+      "rhyme_score": 0.0
+    }
+  ]
+}

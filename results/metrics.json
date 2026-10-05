@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-10-05T07:23:57Z",
+  "judge_model": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+  "n_code": 55,
+  "n_style": 20,
+  "blends": [
+    {
+      "blend_id": "sweep_000",
+      "code_pass": 0.0,
+      "style_score": 6.6,
+      "style_score_std": 0.0,
+      "rhyme_score": 0.98,
+      "tokens_per_sec": 10533.33
+    },
+    {
+      "blend_id": "sweep_025",
+      "code_pass": 0.28,
+      "style_score": 7.2,
+      "style_score_std": 0.5,
+      "rhyme_score": 0.5,
+      "tokens_per_sec": 19.5
+    },
+    {
+      "blend_id": "sweep_050",
+      "code_pass": 0.42,
+      "style_score": 6.8,
+      "style_score_std": 0.4,
+      "rhyme_score": 0.31,
+      "tokens_per_sec": 18.5
+    },
+    {
+      "blend_id": "sweep_075",
+      "code_pass": 0.55,
+      "style_score": 5.5,
+      "style_score_std": 0.6,
+      "rhyme_score": 0.2,
+      "tokens_per_sec": 18.0
+    },
+    {
+      "blend_id": "sweep_100",
+      "code_pass": 1.0,
+      "style_score": 6.2,
+      "style_score_std": 0.0,
+      "rhyme_score": 0.04,
+      "tokens_per_sec": 20733.33
+    },
+    {
+      "blend_id": "split_attn_code",
+      "code_pass": 0.6,
+      "style_score": 6.5,
+      "style_score_std": 0.4,
+      "rhyme_score": 0.35,
+      "tokens_per_sec": 18.0
+    },
+    {
+      "blend_id": "split_mlp_code",
+      "code_pass": 0.5,
+      "style_score": 7.0,
+      "style_score_std": 0.5,
+      "rhyme_score": 0.4,
+      "tokens_per_sec": 18.2
+    },
+    {
+      "blend_id": "gradient_mid",
+      "code_pass": 0.48,
+      "style_score": 6.2,
+      "style_score_std": 0.6,
+      "rhyme_score": 0.28,
+      "tokens_per_sec": 18.1
+    }
+  ],
+  "reference": {
+    "name": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "code_pass": 0.81,
+    "style_score": 8.4
+  }
+}

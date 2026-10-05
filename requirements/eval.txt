@@ -1,0 +1,8 @@
+pytest>=8.0.0
+jsonschema>=4.20.0
+ruff>=0.3.0
+datasets>=2.18.0
+pronouncing>=0.2.0
+openai>=1.14.0
+matplotlib>=3.8.0
+docker>=7.0.0
