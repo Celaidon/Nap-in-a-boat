@@ -1,0 +1,23 @@
+# Keeps the build context small: no virtualenv, no model files, no secrets, no git history.
+.git
+.github
+.venv
+.env
+.env.*
+!.env.example
+local_models
+*.gguf
+*.safetensors
+*.bin
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+tests
+verification
+docs
+assets
+hf_cache
+merged
+gguf
+llama.cpp

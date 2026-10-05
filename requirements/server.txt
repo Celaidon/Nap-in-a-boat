@@ -1,0 +1,14 @@
+# Track C: backend server dependencies (all pinned).
+# llama-cpp-python ships prebuilt CPU wheels on this extra index, so no compiler is needed.
+--extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+websockets==17.2  # also used by scripts/smoke_test.py
+pydantic-settings==2.15.0
+llama-cpp-python==0.3.36
+boto3==1.43.108
+jsonschema==4.26.0
+httpx==0.28.1
+pytest==9.1.1
+ruff==0.16.10

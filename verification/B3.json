@@ -1,0 +1,15 @@
+{
+  "check_id": "B3",
+  "status": "pass",
+  "owner": "muskan",
+  "timestamp": "2026-10-05T07:23:34.791883+00:00",
+  "code_commit": "9c2fbe0",
+  "details": {
+    "fenced_lang_tag": true,
+    "fenced_no_tag": true,
+    "multiple_blocks_picked": true,
+    "no_fences_extracted": true,
+    "fallback_whole_answer": true,
+    "prompt_template_valid": true
+  }
+}

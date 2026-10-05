@@ -1,0 +1,20 @@
+{"id": "poem_01", "kind": "poem", "prompt": "Write an eight-line rhyming poem about a quiet harbor at dawn."}
+{"id": "poem_02", "kind": "poem", "prompt": "Write a twelve-line rhyming poem describing autumn leaves falling in a windy park."}
+{"id": "poem_03", "kind": "poem", "prompt": "Write a four-stanza rhyming poem about an old library full of ancient books."}
+{"id": "poem_04", "kind": "poem", "prompt": "Write an eight-line poem with an ABAB rhyme scheme about stargazing on a clear summer night."}
+{"id": "poem_05", "kind": "poem", "prompt": "Write a ten-line rhyming poem about a lighthouse guiding ships through a stormy sea."}
+{"id": "poem_06", "kind": "poem", "prompt": "Write an eight-line rhyming poem about the first snowfall of winter in a mountain village."}
+{"id": "story_01", "kind": "story", "prompt": "Write a short creative story (under 300 words) about a clockmaker who discovers a pocket watch that runs backward."}
+{"id": "story_02", "kind": "story", "prompt": "Write a narrative about an astronomer who detects an unexpected harmonic signal coming from Jupiter's moons."}
+{"id": "story_03", "kind": "story", "prompt": "Write a flash fiction piece about a gardener whose rare night-blooming flower grants a single quiet memory."}
+{"id": "story_04", "kind": "story", "prompt": "Write a brief mystery story about a missing antique key in a seaside bed-and-breakfast."}
+{"id": "story_05", "kind": "story", "prompt": "Write a short atmospheric story about two travelers seeking shelter from a sudden storm in a stone cottage."}
+{"id": "email_01", "kind": "email", "prompt": "Write a polite professional email requesting a deadline extension for a software project due to server migration delays."}
+{"id": "email_02", "kind": "email", "prompt": "Write a warm welcome email to a new team member joining as a Senior Data Scientist."}
+{"id": "email_03", "kind": "email", "prompt": "Write a persuasive email proposing a remote work policy trial for a design team."}
+{"id": "email_04", "kind": "email", "prompt": "Write a concise customer support email addressing a billing discrepancy with empathy and clear resolution steps."}
+{"id": "email_05", "kind": "email", "prompt": "Write a follow-up email after a successful project kickoff meeting with client stakeholders."}
+{"id": "explanation_01", "kind": "explanation", "prompt": "Explain how optical fiber cables transmit data across long distances using total internal reflection, aimed at a high school student."}
+{"id": "explanation_02", "kind": "explanation", "prompt": "Explain the concept of time complexity and Big O notation using an everyday library analogy."}
+{"id": "explanation_03", "kind": "explanation", "prompt": "Explain how electric vehicle regenerative braking works in simple, clear terms for non-engineers."}
+{"id": "explanation_04", "kind": "explanation", "prompt": "Explain the difference between compiler and interpreter code execution with concrete examples."}
