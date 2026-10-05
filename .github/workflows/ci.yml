@@ -8,7 +8,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install -r requirements/server.txt
-      - run: ruff check .
+      - run: ruff check . --output-format=github
       - name: Tests
         shell: bash
         run: pytest -q -m "not models" -ra --tb=short 2>&1 | tee pytest.log
