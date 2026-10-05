@@ -36,6 +36,14 @@ export function createApi({
 
   const resolveWsUrl = () => {
     if (wsUrl) return wsUrl
+    if (baseUrl) {
+      try {
+        const u = new URL(baseUrl, globalThis.location?.href)
+        return `${u.protocol === 'https:' ? 'wss' : 'ws'}://${u.host}/ws`
+      } catch (e) {
+        // fallback to default
+      }
+    }
     const loc = globalThis.location
     return `${loc.protocol === 'https:' ? 'wss' : 'ws'}://${loc.host}/ws`
   }

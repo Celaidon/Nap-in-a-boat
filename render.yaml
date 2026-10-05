@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: nap-in-a-boat-backend
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements/server.txt
+    startCommand: uvicorn src.server.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SIM_PROVIDER
+        value: groq
+      - key: SIM_API_KEY
+        sync: false
+      - key: SIM_WRITING_MODEL
+        value: qwen/qwen3.8-27b
+      - key: SIM_CODE_MODEL
+        value: qwen/qwen3.8-27b

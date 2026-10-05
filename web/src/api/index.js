@@ -2,10 +2,13 @@
 import { createApi } from './api.js'
 import { createMock } from './mock.js'
 
-const searchMock = new URLSearchParams(globalThis.location?.search ?? '').get('mock')
+const searchParams = new URLSearchParams(globalThis.location?.search ?? '')
+const searchMock = searchParams.get('mock')
+const customApiUrl = searchParams.get('api') || import.meta.env?.VITE_API_URL || ''
+
 const isVercel = globalThis.location?.hostname?.includes('vercel.app')
-export const useMock = searchMock === '1' || (isVercel && searchMock !== '0')
+export const useMock = searchMock === '1' || (isVercel && searchMock !== '0' && !customApiUrl)
 
-export const api = useMock ? createMock() : createApi()
+export const api = useMock ? createMock() : createApi({ baseUrl: customApiUrl })
 
-if (useMock) globalThis.blendlabMock = api // console helpers: blendlabMock.drop(), blendlabMock.restore()
+if (useMock) globalThis.blendlabMock = api
