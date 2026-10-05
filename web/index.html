@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nap-in-a-boat (BlendLab) — Model Blending Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div>
+      <h1>⛵ Nap-in-a-boat</h1>
+      <p class="subtitle">SLERP Model Blending & Capability Curve Explorer (Gemma 1.1 + CodeGemma)</p>
+    </div>
+  </header>
+
+  <div class="dashboard-grid">
+    <!-- Left Column: Blend Selection & Generation -->
+    <div class="card">
+      <div class="card-title">
+        🎚️ Model Blend Selection
+      </div>
+
+      <div class="slider-container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span>Selected Blend:</span>
+          <span id="currentBlendLabel" class="blend-badge">sweep_050 (50% blend)</span>
+        </div>
+        <input type="range" id="blendSlider" min="0" max="1" step="0.25" value="0.5">
+        <div class="slider-labels">
+          <span>t = 0.0 (Writing A)</span>
+          <span>t = 0.5 (50/50)</span>
+          <span>t = 1.0 (Code B)</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">Special Variants:</span>
+        <div class="variant-pills">
+          <button class="pill" data-id="split_attn_code">Attention → Code (split_attn_code)</button>
+          <button class="pill" data-id="split_mlp_code">MLP → Code (split_mlp_code)</button>
+          <button class="pill" data-id="gradient_mid">Depth Gradient (gradient_mid)</button>
+        </div>
+      </div>
+
+      <div class="prompt-section" style="margin-top: 2rem;">
+        <div class="card-title">💬 Live Streaming Inference</div>
+        <textarea id="promptInput" placeholder="Enter a prompt (e.g. Write a python function to reverse a string...)">Write a python function to reverse a string and write a short poem explaining it.</textarea>
+        <button id="generateBtn" class="btn-primary">Generate Tokens</button>
+
+        <div style="margin-top: 0.5rem;">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Output Stream:</span>
+          <div id="outputBox" class="output-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Capability Curve Chart -->
+    <div class="card">
+      <div class="card-title">
+        📈 Capability Curve
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Coding pass rate (%) vs Writing style score (1-10) across all blend checkpoints.
+      </p>
+      
+      <div class="chart-container">
+        <canvas id="capabilityChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
