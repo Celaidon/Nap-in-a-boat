@@ -16,7 +16,7 @@ def get_tensor_map(model_dir: pathlib.Path):
     tmap = {}
     for shard in model_dir.glob("*.safetensors"):
         with safe_open(str(shard), framework="pt") as f:
-            for name in f.keys():
+            for name in f:
                 tmap[name] = str(shard)
     return tmap
 

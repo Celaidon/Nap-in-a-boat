@@ -20,11 +20,13 @@ jobs:
           cache: pip
           cache-dependency-path: requirements/*.txt
       - run: pip install -r requirements/server.txt
-      - name: Install the other tracks' dependencies (skipped while their files are empty)
+      - name: Install Track B's dependencies (needed by its tests)
         run: |
-          for f in requirements/merge.txt requirements/eval.txt; do
-            if [ -s "$f" ]; then pip install -r "$f"; fi
-          done
+          if [ -s requirements/eval.txt ]; then pip install -r requirements/eval.txt; fi
+      # requirements/merge.txt (Track A) is deliberately not installed: it pulls in torch and mergekit,
+      # none of the model-free tests need them, and it conflicts with the server pins.
+      - name: Pre-pull the image Track B's code sandbox runs in (the first pull is slower than its timeout)
+        run: docker pull python:3.11-slim
       - run: ruff check . --output-format=github
       - name: Contract schemas, committed data and repo hygiene
         run: python scripts/validate_repo.py
@@ -38,6 +40,24 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           tail -n 80 pytest.log >> "$GITHUB_STEP_SUMMARY" || true
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - name: Frontend tests
+        run: npm test
+      - name: Production build
+        run: npm run build
 
   docker:
     runs-on: ubuntu-latest

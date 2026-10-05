@@ -92,7 +92,7 @@ def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
     async def metrics() -> dict:
         return app.state.metrics
 
-    # Mounted last so it never shadows the routes above. Skipped until Phase 4 adds web/index.html.
+    # The built frontend. Mounted last so it never shadows the routes above, and skipped when it has not been built.
     web_dir = settings.resolve(settings.web_dir)
     if (web_dir / "index.html").exists():
         app.mount("/", StaticFiles(directory=web_dir, html=True), name="web")
