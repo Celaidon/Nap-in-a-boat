@@ -80,7 +80,16 @@ def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
         app.state.score_tasks = load_scoring(settings.scoring_module)  # used by the Best Blend Finder
         yield
 
+    from fastapi.middleware.cors import CORSMiddleware
+
     app = FastAPI(title="BlendLab", lifespan=lifespan)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     app.state.settings = settings
     app.state.finder_running = False  # only one Best Blend Finder run at a time
     app.include_router(ws_router)
