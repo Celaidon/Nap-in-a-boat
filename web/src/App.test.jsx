@@ -175,3 +175,19 @@ describe('finder', () => {
     expect(finder).toBeDisabled()
   })
 })
+
+describe('simulated mode', () => {
+  it('always tells the user the answers are simulated', async () => {
+    const real = mock.api.getHealth
+    mock.api.getHealth = async () => ({ status: 'ok', loaded: [], simulated: { provider: 'groq', writing_model: 'w', code_model: 'c' } })
+    render(<App />)
+    expect(await screen.findByRole('note')).toHaveTextContent('Simulated. Answers come from groq models (w / c), not from merged weights.')
+    mock.api.getHealth = real
+  })
+
+  it('shows no label for real models', async () => {
+    render(<App />)
+    await ready()
+    expect(screen.queryByRole('note')).not.toBeInTheDocument()
+  })
+})

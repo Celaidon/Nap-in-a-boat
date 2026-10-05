@@ -297,11 +297,11 @@ def test_health_lists_loaded_blends(make_client, tmp_path):
     client = make_client()
     h = Harness(tmp_path)
     attach_manager(client, h)
-    assert client.get("/health").json() == {"status": "ok", "loaded": []}
+    assert client.get("/health").json() == {"status": "ok", "loaded": [], "simulated": None}
     with client.websocket_connect("/ws") as ws:
         ws.send_json({"type": "generate", "request_id": "r1", "blend_id": "sweep_050", "prompt": "hi"})
         assert collect(ws, "r1")[-1]["type"] == "done"
-    assert client.get("/health").json() == {"status": "ok", "loaded": ["sweep_050"]}
+    assert client.get("/health").json() == {"status": "ok", "loaded": ["sweep_050"], "simulated": None}
 
 
 def test_busy_error_reaches_the_client(make_client, tmp_path):

@@ -16,6 +16,12 @@ class Settings(BaseSettings):
     scoring_module: str = "contracts.scoring"  # later: src.eval.scoring
     dev_model_override: str = ""  # one GGUF used for every blend_id; empty in production
     fake_generator: bool = False  # stream a fixed sentence instead of running a model
+    # SIMULATED mode (hosted API instead of merged weights). Empty sim_provider = real models.
+    sim_provider: str = ""  # groq | gemini | openrouter
+    sim_api_key: str = ""
+    sim_base_url: str = ""  # only for providers not in the presets
+    sim_writing_model: str = ""
+    sim_code_model: str = ""  # defaults to the writing model
     models_dir: str = "./local_models"
     max_loaded_models: int = 2
     web_dir: str = "web/dist"  # the built frontend (npm run build in web/)

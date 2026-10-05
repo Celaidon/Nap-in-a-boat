@@ -34,6 +34,13 @@ export default function App() {
       <div className="app">
         <TopBar status={status} mock={useMock} panel={panel} onPanel={setPanel} onNewChat={chat.clear} canClear={state.turns.length > 0 && !chat.streaming} />
         <Banner status={status} />
+        {state.simulated && (
+          <div className="sim-banner" role="note">
+            <b>Simulated.</b> Answers come from {state.simulated.provider} models ({state.simulated.writing_model}
+            {state.simulated.code_model !== state.simulated.writing_model && ` / ${state.simulated.code_model}`}), not from merged weights.
+            The blend only changes the model and a style instruction.
+          </div>
+        )}
 
         <div className="body">
           <main className="stage">

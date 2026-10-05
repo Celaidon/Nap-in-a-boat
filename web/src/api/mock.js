@@ -73,6 +73,7 @@ export function createMock({ speed: initialSpeed = 1 } = {}) {
     connect() {},
     getRegistry: async () => structuredClone(mockRegistry),
     getMetrics: async () => structuredClone(mockMetrics),
+    getHealth: async () => ({ status: 'ok', loaded: [], simulated: null }),
 
     generate(blendId, prompt, onToken, onDone, onError) {
       const id = `m${nextId++}`

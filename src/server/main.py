@@ -11,6 +11,7 @@ from fastapi.staticfiles import StaticFiles
 from src.server.generate import fake_session, fake_stream
 from src.server.models import ModelManager
 from src.server.settings import ROOT, Settings
+from src.server.simulate import ApiSimulator
 from src.server.ws import router as ws_router
 
 SCHEMA_DIR = ROOT / "contracts" / "schemas"
@@ -71,6 +72,11 @@ def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
         app.state.manager = ModelManager(app.state.registry, settings)
         app.state.stream = stream or (fake_stream if settings.fake_generator else app.state.manager.stream)
         app.state.session = fake_session if settings.fake_generator else app.state.manager.session
+        app.state.simulated = None
+        if settings.sim_provider:  # hosted-API demo mode: always reported to the UI as simulated
+            sim = ApiSimulator(settings, app.state.registry)
+            app.state.simulated = {"provider": settings.sim_provider, "writing_model": sim.writing_model, "code_model": sim.code_model}
+            app.state.stream, app.state.session = stream or sim.stream, sim.session
         app.state.score_tasks = load_scoring(settings.scoring_module)  # used by the Best Blend Finder
         yield
 
@@ -82,7 +88,7 @@ def create_app(settings: Settings | None = None, stream=None) -> FastAPI:
     @app.get("/health")
     async def health() -> dict:
         manager = getattr(app.state, "manager", None)
-        return {"status": "ok", "loaded": manager.loaded if manager else []}
+        return {"status": "ok", "loaded": manager.loaded if manager else [], "simulated": app.state.simulated}
 
     @app.get("/api/registry")
     async def registry() -> dict:
