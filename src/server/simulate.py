@@ -38,13 +38,26 @@ class ApiSimulator:
         """Which API model answers and the style instruction. This is the whole 'simulation'."""
         t = self.t[blend_id]
         model = self.code_model if t > 0.5 else self.writing_model
-        if t == 0:
-            style = "You are a creative writing assistant. Prefer expressive prose or verse."
-        elif t == 1:
-            style = "You are a coding assistant. Answer with clear, correct code and a one-line explanation."
+        if t == 1.0:
+            style = (
+                "You are a pure 100% code generator. You MUST respond ONLY with code. "
+                "Treat EVERY single prompt—including greetings like 'hello' or general questions—as a coding task "
+                "and output valid code (e.g. print('Hello World') or functions). "
+                "Do NOT include conversational chatter or prose outside of code."
+            )
+        elif t == 0.0:
+            style = (
+                "You are a pure 100% creative writing and prose assistant. "
+                "You MUST respond ONLY in expressive natural language, prose, or verse. "
+                "Do NOT output markdown code blocks or computer program code under any circumstances."
+            )
         else:
-            style = (f"Answer in a blend of {round((1 - t) * 100)}% expressive writing and {round(t * 100)}% "
-                     "precise coding style. Use code only when the task needs it.")
+            code_pct = round(t * 100)
+            write_pct = round((1 - t) * 100)
+            style = (
+                f"You are a blended AI model ({write_pct}% Writing, {code_pct}% Code). "
+                f"Balance {write_pct}% expressive natural language prose with {code_pct}% precise code blocks."
+            )
         return model, style
 
     def _payload(self, blend_id: str, prompt: str, max_tokens: int, temperature: float, stream: bool) -> dict:
