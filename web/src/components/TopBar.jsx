@@ -36,7 +36,7 @@ export function TopBar({ status, mock, panel, onPanel, onNewChat, canClear }) {
           <span className="short">New</span>
         </button>
         {tab('curve', 'Capability curve', 'Curve')}
-        {tab('finder', 'Find best blend', 'Finder')}
+        {/* {tab('finder', 'Find best blend', 'Finder')} */}
         <StatusPill status={status} mock={mock} />
       </nav>
     </header>
