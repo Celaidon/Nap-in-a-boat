@@ -11,10 +11,7 @@ Blend a **writing model** and a **coding model** with SLERP, drag a handle along
 ![React](https://img.shields.io/badge/frontend-React%20%2B%20Vite-6b0011)
 ![License](https://img.shields.io/badge/license-Apache--2.0-e49b2b)
 
-<!-- 🎬 HERO GIF PLACEHOLDER
-     Record a 10-15 second screen capture: drag the slider from 0% to 100% with the same prompt.
-     Save it as assets/hero.gif, then replace this comment with:
-     <img src="assets/hero.gif" alt="BlendLab demo" width="860"> -->
+![hero](assets/hero.png)
 
 >  · slider drag, same prompt, three different answers
 
