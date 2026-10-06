@@ -18,6 +18,20 @@ PRESETS = {  # all three speak the OpenAI chat-completions format
 }
 
 
+def provider_quirks(model: str) -> dict:
+    """Reasoning models think before answering and can spend a small max_tokens budget on that.
+    Ask them to keep it short (Groq's parameter names). Other models get nothing extra."""
+    name = model.lower()
+    if "gpt-oss" in name:
+        return {"reasoning_effort": "low"}
+    if "qwen3" in name:
+        return {"reasoning_effort": "none"}
+    return {}
+
+
+REASONING_HEADROOM = 800  # extra provider tokens for models that think first; visible text is still capped below
+
+
 class ApiSimulator:
     def __init__(self, settings, registry: dict, transport: httpx.BaseTransport | None = None):
         if settings.sim_provider not in PRESETS and not settings.sim_base_url:
@@ -43,14 +57,17 @@ class ApiSimulator:
         elif t == 1:
             style = "You are a coding assistant. Answer with clear, correct code and a one-line explanation."
         else:
-            style = (f"Answer in a blend of {round((1 - t) * 100)}% expressive writing and {round(t * 100)}% "
-                     "precise coding style. Use code only when the task needs it.")
+            style = f"Style: {round((1 - t) * 100)}% expressive prose, {round(t * 100)}% precise code. Use code only if the task needs it."
         return model, style
 
     def _payload(self, blend_id: str, prompt: str, max_tokens: int, temperature: float, stream: bool) -> dict:
         model, style = self.route(blend_id)
+        quirks = provider_quirks(model)
+        if quirks:
+            max_tokens += REASONING_HEADROOM
         return {"model": model, "stream": stream, "max_tokens": max_tokens, "temperature": temperature,
-                "messages": [{"role": "system", "content": style}, {"role": "user", "content": prompt}]}
+                "messages": [{"role": "system", "content": style}, {"role": "user", "content": prompt}],
+                **quirks}
 
     def _fail(self, status: int, body: str) -> GenerationError:
         code = "busy" if status == 429 else "internal"
@@ -65,14 +82,16 @@ class ApiSimulator:
                 async with client.stream("POST", f"{self.base}/chat/completions", json=body, headers=headers) as r:
                     if r.status_code != 200:
                         raise self._fail(r.status_code, (await r.aread()).decode(errors="replace"))
+                    sent = 0
                     async for line in r.aiter_lines():
-                        if stop_event.is_set():
+                        if stop_event.is_set() or sent >= max_tokens:
                             return
                         if not line.startswith("data:") or line.strip() == "data: [DONE]":
                             continue
                         choices = json.loads(line[5:]).get("choices") or [{}]
                         text = (choices[0].get("delta") or {}).get("content")
                         if text:
+                            sent += 1
                             yield text
             except httpx.HTTPError as exc:
                 raise GenerationError("internal", f"Simulation API unreachable: {exc}") from exc
